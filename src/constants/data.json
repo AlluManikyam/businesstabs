@@ -1,0 +1,164 @@
+{
+    "addBusinessCase": {
+      "plan_code": "RIFV109147",
+      "set_id": "12443",
+      "status": [
+        { "value": "Active", "id": "0" },
+        { "value": "In Active", "id": "1" }
+      ],
+      "plan_table": {
+        "effective_date": "02/12/2019",
+        "status": [
+          { "value": "Active", "id": "0" },
+          { "value": "In Active", "id": "1" }
+        ],
+        "batch_rpt_from_date": "04/12/2019",
+        "batch_rpt_to_date": "09/12/2019",
+        "description": "Mgmt Prog Enterprise Wireline from Verizon pvt.ltd",
+        "mgt_associate_plan": [
+          { "value": "Management", "id": "0" },
+          { "value": "Individual", "id": "1" },
+          { "value": "Group", "id": "2" },
+          { "value": "Leading", "id": "3" }
+        ],
+        "region": "Company",
+        "redeployment_period": "30",
+        "volunteer_periond": "0",
+        "severance_calc_method": "method",
+        "starting_business_case_seq_num": "2",
+        "payroll_earning_code": "1234",
+        "payroll_recurring_code": "Company",
+        "last_business_case_seq_num": "109145",
+        "suppress_from_late_notify_email": false,
+        "suppress_from_timesheet_reminder_email": false,
+        "suppress_from_career_svcs_file": false,
+        "force_bau_processing": true,
+        "allow_ees_wless_than_oneyear_svc": true
+      }
+    },
+    "manageBusinessCase": {
+      "plan": "",
+      "business_case_number": "",
+      "business_case_data": {
+        "line_of_business_description": "Verizon orporate",
+        "business_case_status": "Draft",
+        "business unit_vp": "TECH, ARCH, & PLNG/Uiots YI, laaayt",
+        "contract_company_name": "",
+        "cancellation_date": ""
+      },
+      "business_case_data_management": {
+        "business_reasons": [
+          {
+            "change_in_business_status": [
+              { "value": "Active", "id": "0" },
+              { "value": "In Active", "id": "1" }
+            ]
+          },
+          {
+            "too_meet_budjetry_initiates": [
+              { "value": "Active", "id": "0" },
+              { "value": "In Active", "id": "1" }
+            ]
+          },
+          {
+            "status": [
+              { "value": "Active", "id": "0" },
+              { "value": "In Active", "id": "1" }
+            ]
+          }
+        ],
+        "notification_date": "02/12/2019",
+        "off_payroll_date": "20/12/2019",
+        "notification_period_plan": "20",
+        "last_day_worked": "1"
+      },
+      "rif_information": {
+        "type_of_rif": "",
+        "individual": false,
+        "rate_and_rank": false,
+        "functional_group_elimination": false,
+        "job_code": "JD210",
+        "career_band": "",
+        "number_of_employees_currently_performing_work": "",
+        "number_to_be_reduced": ""
+      },
+      "comments": {
+        "date_time_entered": "",
+        "entered_by": "",
+        "comment": "",
+        "created_by": "",
+        "created_date_time": "",
+        "updated_by": "",
+        "last_update_date_time": ""
+      }
+    },
+    "selectedEmployees": {
+      "set_id": "",
+      "supervisor_eid": "",
+      "company": "",
+      "job_code": "",
+      "cost_center": "",
+      "emp_id": "",
+      "location_code": "",
+      "employee_eid": "",
+      "career_brand": "",
+      "first_name": "",
+      "last_name": ""
+    },
+    "impactedEmployees": [
+      {
+        "set_id": "",
+        "supervisor_eid": "",
+        "company": "",
+        "job_code": "",
+        "cost_center": "",
+        "emp_id": "",
+        "location_code": "",
+        "employee_eid": "",
+        "career_brand": "",
+        "first_name": "",
+        "last_name": ""
+      },
+      {
+        "set_id": "",
+        "supervisor_eid": "",
+        "company": "",
+        "job_code": "",
+        "cost_center": "",
+        "emp_id": "",
+        "location_code": "",
+        "employee_eid": "",
+        "career_brand": "",
+        "first_name": "",
+        "last_name": ""
+      }
+    ],
+    "employeeInformation": [
+      {
+        "set_id": "",
+        "supervisor_eid": "",
+        "company": "",
+        "job_code": "",
+        "cost_center": "",
+        "emp_id": "",
+        "location_code": "",
+        "employee_eid": "",
+        "career_brand": "",
+        "first_name": "",
+        "last_name": ""
+      },
+      {
+        "set_id": "",
+        "supervisor_eid": "",
+        "company": "",
+        "job_code": "",
+        "cost_center": "",
+        "emp_id": "",
+        "location_code": "",
+        "employee_eid": "",
+        "career_brand": "",
+        "first_name": "",
+        "last_name": ""
+      }
+    ]
+  }
