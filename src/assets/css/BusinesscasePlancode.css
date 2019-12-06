@@ -1,0 +1,94 @@
+.header {
+    overflow: hidden;
+    background-color: #fff;
+    padding: 20px 10px;
+}
+
+.header img {
+    max-width: 100%;
+    height: auto;
+    position: relative;
+    float: left;
+}
+
+.barnd-logo {
+    width: 10rem;
+}
+
+.clr-sub {
+    color: #ed1b24;
+}
+
+.navbar {
+    position: relative;
+    display: block !important;
+    border-radius: 0px !important;
+}
+
+.navbar-nav {
+    /* display: flex; */
+    flex-direction: row !important;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.nav>li>a {
+    font-size: 15px;
+}
+
+navbar-inverse .navbar-nav>li>a {
+    color: #9d9d9d;
+    opacity: 0.2;
+}
+
+
+/* Content Area */
+
+.activity-head {
+    display: flex;
+    left: 10px;
+    position: relative;
+    font-size: 2rem;
+}
+
+.tab-content > .tab-pane {
+    opacity: 1 !important;
+}
+
+.tab-content > .tab-pane >p {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.tab-content > .active {
+    border-bottom: 1px solid #dee2e6;
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+    min-height: 400px;
+}
+
+.planCode-Grid .row {
+    margin: 25px -15px 25px -15px;
+}
+.plancodeForm .row{
+    margin: 20px 0 20px 0;
+}
+.rowTopnopadd {
+    margin: -23px -15px 25px -15px !important;
+}
+
+.fontweight {
+    font-size: 13px;
+}
+
+.fontweight > span {
+    font-size: 13px;
+    font-weight: 400;
+    position: relative;
+    left: 10px;
+}
+
+.fontbold {
+    font-weight: 700 !important;
+}

@@ -1,0 +1,488 @@
+/* Common Css */
+/* Navigation */
+
+.navbar-inverse .navbar-nav .nav-link {
+  color: rgb(255, 255, 255);
+  font-size: 160%;
+    font-weight: 600;
+}
+.navbar-toggler {
+  padding: 0.25rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background-color: #fffdfd00;
+  border: 1px solid #fff;
+  border-radius: 0.25rem;
+}
+
+.brandName{
+  font-size: 17px;
+  font-weight: 800;
+  position: relative;
+  left: 10px;
+  top: 10px;
+}
+.brandcolor{
+  color: #d52b1e;
+}
+.barnd-logo{
+  width: 16rem;
+}
+/* Forms */
+.form-horizontal .form-group {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.Businesscase .Businesscasedata .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #eaeaea !important;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(234, 234, 234, 0.37) !important;
+}
+
+
+.inputbox-lg, .BusinesscaseData, .input-group-addon {
+    padding: 6px 10px !important;
+}
+.inputbox-lg, .BusinesscaseData, .glyphicon-calendar:before {
+  
+    position: relative;
+    right: 0px !important;
+    font-size: 20px !important;
+}
+#datePicker, .BusinesscaseData, input{
+    font-size: 14px !important;
+}
+
+/*  Custom DropDown*/
+
+.select-dropbox {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    color: #444;
+    line-height: 1.3;
+    padding: .6em 1.4em .5em .8em;
+    width: 100%;
+    max-width: 100%; 
+    box-sizing: border-box;
+    margin: 0;
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    border-radius: 0px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #F4F8FB;
+    background-image: url('assets/icons/down-arrow.png'),
+      linear-gradient(to bottom, #F4F8FB 0%,#F4F8FB 100%);
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+}
+.select-dropbox::-ms-expand {
+    display: none;
+}
+.select-dropbox:hover {
+    border-color: #888;
+}
+.select-dropbox:focus {
+    
+    color: #222; 
+    outline: none;
+}
+.select-dropbox option {
+    font-weight:normal;
+    font-size: 12px !important;
+    position: relative;
+    top: 20px;
+}
+/* common padding */
+.col-padding{
+    padding:10px;
+}
+/* input-group space remove */
+.input-group-addon, .input-group-btn {
+     width: auto;
+    
+}
+.pull-right-align
+{    position: absolute;
+  right: 3%;
+}
+.labelDate{
+    font-weight: 300;
+}
+
+/* Common Label Theme for Global*/
+label{
+  font-size: 14px;
+}
+.labelgrid-group{
+    display: flex;
+    margin-top: 10px;
+    /* margin-bottom: 10px; */
+  }
+  .topRightlabel
+  {
+    position: absolute;
+    right: 32px;
+  }
+  .labelredTheme{
+    font-size: 14px;
+    color: #d52b1e;
+    font-weight: 700;
+  }
+  .labelblackTheme{
+    font-size: 14px;
+    color: #000;
+    font-weight: 700;
+  }
+  .labelgrid{
+    position: relative;
+    top: 1px;
+    font-size: 14px;
+    left: 10px;
+  }
+
+  /* Custom Checkbox */
+  /* The container */
+.customCheckbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .customCheckbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .customtick {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+  }
+  
+/* From Input Outline color*/
+
+.form-control , input{
+  border:1px solid #A2A3A4 !important;
+  height: 40px !important;
+  border-radius: 0px !important;
+  background-color: #F4F8FB !important;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(179, 180, 181, 0.25) !important;
+}
+
+.glyphicon-search:before {
+  content: "\e003";
+    position: relative;
+    top: 4px;
+    font-size: 17px;
+    color: #999;
+    right: 16px;
+}
+  
+/* Flex Left*/
+.flex-left{
+  display: flex;
+  text-align: left;
+}
+
+/*Common Button */
+.btn-black{
+  background-color: #323334 !important;
+}
+.btn-black-small{
+  background-color: #323334 !important;
+  width: 110px;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  height: 34px;
+  padding-left: 38px !important;
+}
+.btn-black-medium{
+  background-color: #323334 !important;
+  width: 180px;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    height: 34px;
+    padding-left: 38px !important;
+    margin-left: 11px;
+}
+
+
+.panelnoradius
+{
+  border-radius: 0px !important;
+}
+.headingBlack{
+  background-color: #000 !important;
+  height: 40px;
+  font-size: 14px;
+  color: #fff !important;
+  font-weight: 700;
+  border-radius: 0px;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+.border-panel-body
+{
+  border-left: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+/* Common Checkbox */
+
+.custom-checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 13px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-weight: 400;
+}
+
+
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.customtick {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #fff;
+  border:1px solid #3F4042;
+  font-weight: 400;
+}
+
+/* On mouse-over, add a grey background color */
+.custom-checkbox:hover input ~ .customtick {
+  background-color: #fff;
+}
+
+/* When the checkbox is checked, add a blue background */
+.custom-checkbox input:checked ~ .customtick {
+  background-color: #000;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.customtick:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.custom-checkbox input:checked ~ .customtick:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.custom-checkbox .customtick:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/*Button iCons*/
+
+
+.btn-save::before {
+  content: '';
+  background-color: #000 !important;
+  width: 45px;
+  height: 32px;
+  background-image: url('./assets/icons/btn-icons/btn-save.png');
+  background-repeat: no-repeat;
+  background-position: 9px 4px !important;
+  background-size: 25px 25px;
+  position: absolute;
+  top: 1px;
+  margin-left: -56px
+}
+.btn-addOne::before {
+  content: '';
+  background-color: #000 !important;
+  width: 37px;
+  height: 32px;
+  background-image: url('./assets/icons/btn-icons/btn-add.png');
+   background-repeat: no-repeat;
+   background-position: 9px 8px !important;
+   background-size: 18px 18px;
+   position: absolute;
+   top: 0px;
+   margin-left: -48px;
+}
+.btn-add::before {
+  content: '';
+  background-color: #000 !important;
+  width: 45px;
+  height: 32px;
+  background-image: url('./assets/icons/btn-icons/btn-add.png');
+  background-repeat: no-repeat;
+  background-position: 9px 4px !important;
+  background-size: 25px 25px;
+  position: absolute;
+  top: 1px;
+  margin-left: -56px
+}
+.btn-search::before {
+  content: '';
+  background-color: #000 !important;
+  width: 45px;
+  height: 32px;
+  background-image: url('./assets/icons/btn-icons/btn-search.png');
+  background-repeat: no-repeat;
+  background-position: 9px 4px !important;
+  background-size: 25px 25px;
+  position: absolute;
+  top: 1px;
+    margin-left: -52px;
+  
+}
+.btn-update::before {
+  content: '';
+  background-color: #000 !important;
+  width: 45px;
+  height: 32px;
+  background-image: url('./assets/icons/btn-icons/btn-update-display.png');
+  background-repeat: no-repeat;
+  background-position: 9px 4px !important;
+  background-size: 25px 25px;
+  position: absolute;
+  top: 1px;
+  margin-left: -56px;
+  
+}
+.btn-history::before {
+  content: '';
+  background-color: #000 !important;
+  width: 45px;
+  height: 32px;
+  background-image: url('./assets/icons/btn-icons/btn-correct-history.png');
+  background-repeat: no-repeat;
+  background-position: 9px 4px !important;
+  background-size: 25px 25px;
+  position: absolute;
+  top: 1px;
+  margin-left: -56px;
+}
+.rowTopspace
+{
+  margin-top:10px;
+}
+#cmbc-tab
+{
+  position: relative;
+    
+}
+.panel-default>.panel-heading {
+
+  border-color: #333;
+}
+.labelRspace
+{
+  right: 15px;
+    position: relative;
+}
+/* DataTable's */
+.findEmp 
+{
+  margin: 20px 0 20px 0;
+}
+.findEmp label
+{
+font-weight: 600 !important;
+}
+.findEmp  th
+{
+  background: #333;
+    color: #fff;
+    
+}
+.findEmp  th, td, .dataTables_info, ul.pagination
+{
+  font-size: 14px;
+  vertical-align: middle !important;
+}
+.findEmp .form-control, input {
+  
+  height: 16px !important;
+  /* top: 12px; */
+  
+}
+.findEmp  .dt-checkboxes{
+top:12px;
+}
+div.dataTables_wrapper div.dataTables_length select {
+  width: 75px;
+  display: inline-block;
+  height: 40px !important;
+  margin-left: 10px;
+}
+div.dataTables_wrapper div.dataTables_filter input {
+  margin-left: 0.5em;
+  display: inline-block;
+  width: auto;
+  height: 40px !important;
+}
+table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after, table.dataTable thead .sorting_desc:after, table.dataTable thead .sorting_asc_disabled:after, table.dataTable thead .sorting_desc_disabled:after {
+    bottom: 18px;
+  
+}
+.findEmp  .form-inline{
+  display: block;
+}
+.findEmp .dataTables_length{
+  display: flex;
+}
+.findEmp .dataTables_paginate,  .dataTables_filter{
+  float: right;
+
+}
+.dataTables_filter input
+{
+  height: 40dpx;
+}
