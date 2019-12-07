@@ -1,14 +1,105 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {StoreCtcUserData} from "../../redux/actions/ctcActions";
+import swal from "sweetalert"
+import {storeBusinessCaseData} from "../../redux/actions/fmsActions";
+import commonUtils from '../../utils/ApiCalls.js'
+
 
 class Tab1_AddBusinessCase extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      addBusinessCase: {
+        plan_code: "",
+        set_id: "",
+        status: "Active",
+        plan_table: {
+          effective_date: "",
+          status: "Active",
+          batch_rpt_from_date: "",
+          batch_rpt_to_date: "",
+          description: "",
+          mgt_associate_plan: "Management",
+          region: "",
+          redeployment_period: "",
+          volunteer_periond: "",
+          severance_calc_method: "",
+          starting_business_case_seq_num: "",
+          payroll_earning_code: "",
+          payroll_recurring_code: "",
+          last_business_case_seq_num: "",
+          suppress_from_late_notify_email: false,
+          suppress_from_timesheet_reminder_email: false,
+          suppress_from_career_svcs_file: false,
+          force_bau_processing: true,
+          allow_ees_wless_than_oneyear_svc: true
+        }
+      }
+    };
+
+    console.log("Store Reducerssss",this.props)
+  }
+
+  onChangeValues(e) {
+    let { addBusinessCase } = this.state;
+    addBusinessCase[e.target.name] = e.target.value;
+    this.setState({
+      addBusinessCase
+    });
+  }
+
+  onChangePlanCodeValues(e) {
+    let { addBusinessCase } = this.state;
+    let { plan_table } = addBusinessCase;
+    plan_table[e.target.name] = e.target.value;
+    this.setState({
+      addBusinessCase
+    });
+  }
+
+  addBusinessCaseMethod() {
+    const effective_date = document.getElementById("effective_date").value;
+    const batch_rpt_from_date = document.getElementById("batch_rpt_from_date")
+      .value;
+    const batch_rpt_to_date = document.getElementById("batch_rpt_to_date")
+      .value;
+    let { addBusinessCase } = this.state;
+    let { plan_table } = addBusinessCase;
+    plan_table.effective_date = effective_date;
+    plan_table.batch_rpt_from_date = batch_rpt_from_date;
+    plan_table.batch_rpt_to_date = batch_rpt_to_date;
+
+    // API calling
+    commonUtils.storeAddBusinessCase(addBusinessCase).then((data)=>{
+      if (data) {
+        swal({
+          title: "Plancode saved successfully",
+          icon: "success",
+        })
+        .then(() => {
+          this.props.storeBusinessCaseData(addBusinessCase);
+          this.props.changeCurrentTab(2,"tabTwo")
+        })
+      }
+
+    }).catch((err)=>{
+      console.log("error",err)
+
+    })
+   
+  }
+
   render() {
+    let { plan_code, set_id, plan_table } = this.state.addBusinessCase;
+
     return (
       <>
         <div id="tabOne" className="tab-pane fade in active">
           <div className="container-fluid">
-            <form className="form-horizontal plancodeForm">
+            <form
+              className="form-horizontal plancodeForm"
+              id="form_businesscase"
+            >
               <div className="row">
                 <div className="col-md-1">
                   <label className="control-label addformleftlable">
@@ -19,6 +110,9 @@ class Tab1_AddBusinessCase extends Component {
                   <input
                     type="text"
                     className="form-control "
+                    name="plan_code"
+                    onChange={this.onChangeValues.bind(this)}
+                    value={plan_code}
                     placeholder="RIFV"
                     id="planName-input"
                   />
@@ -35,7 +129,10 @@ class Tab1_AddBusinessCase extends Component {
                 <div className="col-md-3 col-sm-10 addformdleft">
                   <input
                     type="text"
-                    className="form-control "
+                    className="form-control"
+                    name="set_id"
+                    onChange={this.onChangeValues.bind(this)}
+                    value={set_id}
                     placeholder=""
                     id="setId-input"
                   />
@@ -49,7 +146,12 @@ class Tab1_AddBusinessCase extends Component {
                 </div>
 
                 <div className="col-md-3 col-sm-10 addformdleft">
-                  <select className="select-dropbox" id="planCodeStatus">
+                  <select
+                    className="select-dropbox"
+                    onChange={this.onChangeValues.bind(this)}
+                    name="status"
+                    id="planCodeStatus"
+                  >
                     <option>Active</option>
                   </select>
                 </div>
@@ -106,17 +208,17 @@ class Tab1_AddBusinessCase extends Component {
                 <div className="col-md-6">
                   <div className="labelgrid-group">
                     <label className="control-label labelredTheme">
-                      Plan :{" "}
+                      Plan :
                     </label>
-                    <div className="labelgrid" id="planName"></div>
+                    <div className="labelgrid" id="planName">{plan_code}</div>
                   </div>
                 </div>
                 <div className="col-md-6">
                   <div className="labelgrid-group pull-right labelRspace">
                     <label className="control-label labelredTheme">
-                      SetID :{" "}
+                      SetID :
                     </label>
-                    <div className="labelgrid" id="setId"></div>
+                    <div className="labelgrid" id="setId">{set_id}</div>
                   </div>
                 </div>
               </div>
@@ -144,7 +246,10 @@ class Tab1_AddBusinessCase extends Component {
                               <input
                                 type="text"
                                 className="form-control"
-                                name="date"
+                                id="effective_date"
+                                onChange={this.onChangePlanCodeValues.bind(
+                                  this
+                                )}
                               />
                               <span className="input-group-addon add-on">
                                 <span className="glyphicon glyphicon-calendar"></span>
@@ -160,7 +265,11 @@ class Tab1_AddBusinessCase extends Component {
                           </div>
 
                           <div className="col-md-2">
-                            <select className="select-dropbox">
+                            <select
+                              className="select-dropbox"
+                              onChange={this.onChangePlanCodeValues.bind(this)}
+                              name="status"
+                            >
                               <option>Active</option>
                             </select>
                           </div>
@@ -181,6 +290,7 @@ class Tab1_AddBusinessCase extends Component {
                                 type="text"
                                 className="form-control"
                                 name="date"
+                                id="batch_rpt_from_date"
                               />
                               <span className="input-group-addon add-on">
                                 <span className="glyphicon glyphicon-calendar"></span>
@@ -203,6 +313,11 @@ class Tab1_AddBusinessCase extends Component {
                                 type="text"
                                 className="form-control"
                                 placeholder="Mgmt Prog Enterprise Wireline"
+                                value={plan_table.description}
+                                name="description"
+                                onChange={this.onChangePlanCodeValues.bind(
+                                  this
+                                )}
                               />
                             </div>
                           </div>
@@ -224,6 +339,7 @@ class Tab1_AddBusinessCase extends Component {
                                 type="text"
                                 className="form-control"
                                 name="date"
+                                id="batch_rpt_to_date"
                               />
                               <span className="input-group-addon add-on">
                                 <span className="glyphicon glyphicon-calendar"></span>
@@ -242,9 +358,14 @@ class Tab1_AddBusinessCase extends Component {
 
                           <div className="col-md-2">
                             <div className="input-group input-append date">
-                              <select className="select-dropbox">
+                              <select
+                                className="select-dropbox"
+                                onChange={this.onChangePlanCodeValues.bind(
+                                  this
+                                )}
+                                name="mgt_associate_plan"
+                              >
                                 <option>Management</option>
-                                <option></option>
                               </select>
                             </div>
                           </div>
@@ -262,6 +383,11 @@ class Tab1_AddBusinessCase extends Component {
                               <input
                                 type="text"
                                 className="form-control"
+                                name="region"
+                                value={plan_table.region}
+                                onChange={this.onChangePlanCodeValues.bind(
+                                  this
+                                )}
                                 placeholder="Company"
                               />
                             </div>
@@ -300,6 +426,11 @@ class Tab1_AddBusinessCase extends Component {
                                 type="text"
                                 className="form-control"
                                 placeholder="30"
+                                name="redeployment_period"
+                                value={plan_table.redeployment_period}
+                                onChange={this.onChangePlanCodeValues.bind(
+                                  this
+                                )}
                               />
                             </div>
                           </div>
@@ -318,6 +449,11 @@ class Tab1_AddBusinessCase extends Component {
                                 type="text"
                                 className="form-control"
                                 placeholder="0"
+                                name="volunteer_periond"
+                                value={plan_table.volunteer_periond}
+                                onChange={this.onChangePlanCodeValues.bind(
+                                  this
+                                )}
                               />
                             </div>
                           </div>
@@ -342,7 +478,15 @@ class Tab1_AddBusinessCase extends Component {
 
                           <div className="col-md-2">
                             <div className="input-group input-append date">
-                              <input type="text" className="form-control" />
+                              <input
+                                type="text"
+                                className="form-control"
+                                name="severance_calc_method"
+                                value={plan_table.severance_calc_method}
+                                onChange={this.onChangePlanCodeValues.bind(
+                                  this
+                                )}
+                              />
                             </div>
                           </div>
 
@@ -360,6 +504,13 @@ class Tab1_AddBusinessCase extends Component {
                                 type="text"
                                 className="form-control"
                                 placeholder=""
+                                name="starting_business_case_seq_num"
+                                value={
+                                  plan_table.starting_business_case_seq_num
+                                }
+                                onChange={this.onChangePlanCodeValues.bind(
+                                  this
+                                )}
                               />
                             </div>
                           </div>
@@ -388,6 +539,11 @@ class Tab1_AddBusinessCase extends Component {
                                 type="text"
                                 className="form-control"
                                 placeholder=""
+                                name="payroll_earning_code"
+                                value={plan_table.payroll_earning_code}
+                                onChange={this.onChangePlanCodeValues.bind(
+                                  this
+                                )}
                               />
                             </div>
                           </div>
@@ -406,6 +562,11 @@ class Tab1_AddBusinessCase extends Component {
                                 type="text"
                                 className="form-control"
                                 placeholder="Company"
+                                name="payroll_recurring_code"
+                                value={plan_table.payroll_recurring_code}
+                                onChange={this.onChangePlanCodeValues.bind(
+                                  this
+                                )}
                               />
                             </div>
                           </div>
@@ -428,6 +589,7 @@ class Tab1_AddBusinessCase extends Component {
                         type="button"
                         className="btn btn-primary btn-save btn-black-small"
                         id="savePlan"
+                        onClick={this.addBusinessCaseMethod.bind(this)}
                       >
                         Save
                       </button>
@@ -476,7 +638,7 @@ class Tab1_AddBusinessCase extends Component {
 }
 
 export default connect(
-  state => ({ userData: state.user_reducer }),
-  { StoreCtcUserData }
+  state => ({ fmsData: state.fpms_reducer }),
+  { storeBusinessCaseData }
 )(Tab1_AddBusinessCase);
 

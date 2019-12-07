@@ -7,16 +7,14 @@ import {
 import thunk from 'redux-thunk'
 
 //Link reducers of all modules here.
-import { user_reducer } from './redux_ctc'
+import { fpms_reducer } from './redux_fms'
 
 
 let reducers=combineReducers({
-    user_reducer
+  fpms_reducer
 })
 
 export default createStore(
   reducers,
-//   composeWithDevTools(
     applyMiddleware(thunk)
-//   )
 )

@@ -1,49 +1,75 @@
 import React, { Component } from "react";
 
 export default class TabsList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
+      currentTab:props.currentTab,
       TabsListArray: [
         {
+          id:0,
           tab_name: "Find Existing Business Case",
           tab_path: "#home",
-          disable: false
+          tabStatus: ""
         },
-        { tab_name: "Add Business Case", tab_path: "#tabOne", disable: false },
+        { id:1,tab_name: "Add Business Case", tab_path: "#tabOne",  tabStatus: "" },
         {
+          id:2,
           tab_name: "Create/Manage Business Case",
           tab_path: "#tabTwo",
-          disable: false
+          tabStatus: "disabled"
         },
         {
+          id:3,
           tab_name: "Selected Employees",
           tab_path: "#tabThree",
-          disable: false
+          tabStatus: "disabled"
         },
         {
+          id:4,
           tab_name: "Impacted Employees",
           tab_path: "#tabFour",
-          disable: false
+          tabStatus: "disabled"
         },
         {
+          id:5,
           tab_name: "Employee Information",
           tab_path: "#tabFive",
-          disable: false
+          tabStatus: "disabled"
         }
       ]
     };
   }
+  
+  componentWillReceiveProps(props){
+    if(props.currentTab){
+      this.setState({
+        currentTab:props.currentTab
+      },()=>{
+        let { TabsListArray,currentTab } = this.state;
+        let index=TabsListArray.findIndex(x => x.id === currentTab);
+        TabsListArray[index].tabStatus="";
+        this.setState({TabsListArray},()=>{
+          window.scrollTo(0,0)
+        })
+      })
+    }
+  }
+
   render() {
-    let { TabsListArray } = this.state;
+    let { TabsListArray,currentTab } = this.state;
     return (
       <>
         <ul className="nav nav-tabs">
           {TabsListArray.map((result, i) => {
-            let tabName = result.tab_name;
             return (
-              <li className={tabName === "Add Business Case" ? "active" : null}>
-                <a data-toggle="tab" href={result.tab_path}>
+              <li
+                className={`${result.tabStatus} ${i === currentTab ? "active" : null}`}
+                key={i}
+                disable={result.disable}
+                id={`tab${i}`}
+              >
+                <a data-toggle="tab"  href={result.tab_path}>
                   {result.tab_name}
                 </a>
               </li>

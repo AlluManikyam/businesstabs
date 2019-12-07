@@ -199,13 +199,13 @@ $(document).ready(function(){
       'order': [[1, 'asc']]
    });
 });
-$(document).ready(function(){
-$('#savePlan').on('click',function(){
-   alert("Plancode saved successfully");
-});
-$('#addPlanCode').on('click',function(){
-   $('#planName').text($('#planName-input').val());
-   $('#setId').text($('#setId-input').val())
+// $(document).ready(function(){
+// $('#savePlan').on('click',function(){
+//    alert("Plancode saved successfully");
+// });
+// $('#addPlanCode').on('click',function(){
+//    $('#planName').text($('#planName-input').val());
+//    $('#setId').text($('#setId-input').val())
    
-})
-});
+// })
+// });

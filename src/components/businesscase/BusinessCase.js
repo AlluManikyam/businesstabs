@@ -9,18 +9,39 @@ import ImpactedEmployees from '../tabslist/Tab4_ImpactedEmployees'
 import EmployeeInfo from '../tabslist/Tab5_EmployeeInfo'
 
 class businesscase extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      currentTab:1
+    }
+    this.setCurrentTab=this.setCurrentTab.bind(this)
+  }
+
+  setCurrentTab(tabNo,tabName){
+    this.setState({
+      currentTab:tabNo
+    },()=>{
+      let activeListClasses=document.getElementsByClassName("tab-pane")
+      for(let i=0;i<activeListClasses.length;i++){
+        activeListClasses[i].classList.remove("active")
+      }
+      document.getElementById(tabName).classList.add("active")
+    })
+  }
+
   render() {
+    let {currentTab}=this.state
     return (
       <div className="Businesscase">
        <Header/>   
         <div className="container-fluid">
           <div className="activity-head">Create/Maintain Case</div>
           <div className="dynamic-taps">
-         <TabsList/>
+         <TabsList currentTab={currentTab}/>
             <div className="tab-content">
              <FindExistingBusinessCase/>
-             <AddBusinessCase/>
-             <CreateManageBusiness/>
+             <AddBusinessCase changeCurrentTab={this.setCurrentTab}/>
+             <CreateManageBusiness  changeCurrentTab={this.setCurrentTab}/>
              <SelectedEmployees/>
              <ImpactedEmployees/>
              <EmployeeInfo/>
