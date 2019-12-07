@@ -1,0 +1,3 @@
+export const CTC_USER_REQUEST = "CTC_USER_REQUEST";
+export const CTC_USER_SUCCESS = "CTC_USER_SUCCESS";
+export const CTC_USER_FAILED = "CTC_USER_FAILED";

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import {StoreCtcUserData} from "../../redux/actions/ctcActions";
 
 class Tab1_AddBusinessCase extends Component {
   render() {
@@ -473,4 +475,8 @@ class Tab1_AddBusinessCase extends Component {
   }
 }
 
-export default Tab1_AddBusinessCase;
+export default connect(
+  state => ({ userData: state.user_reducer }),
+  { StoreCtcUserData }
+)(Tab1_AddBusinessCase);
+
