@@ -2,7 +2,97 @@ import React,{Component} from 'react';
 
 
 class Tab2_CreateManageBusiness extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+    manageBusinessCase: {
+    plan: "",
+    business_case_number: "",
+    business_case_data: {
+      line_of_business_description: "Verizon orporate",
+      business_case_status: "Draft",
+      business_unit_vp: "TECH, ARCH, & PLNG/Uiots YI, laaayt",
+      contract_company_name: "",
+      cancellation_date: "",
+      selection_manager:"",
+      hrbp:"",
+      hrbp_manager:"",
+      hrbp_backup_support:"",
+      servarance_sme:"",
+      legal_contact:""
+    },
+    business_case_data_management: {
+      change_in_business_status:"Active",
+      too_meet_budjetry_initiates: "Active",
+      status:"Active",
+      notification_date: "02/12/2019",
+      off_payroll_date: "20/12/2019",
+      notification_period_plan: "20",
+      last_day_worked: "1"
+    },
+    rif_information: {
+      type_of_rif: "",
+      individual: false,
+      rate_and_rank: false,
+      functional_group_elimination: false,
+      job_code: "JD210",
+      career_band: "",
+      number_of_employees_currently_performing_work: "",
+      number_to_be_reduced: ""
+    },
+    comments: {
+      date_time_entered: "",
+      entered_by: "",
+      comment: "",
+      created_by: "",
+      created_date_time: "",
+      updated_by: "",
+      last_update_date_time: ""
+    }
+  }
+}
+}
+
+onChangeBusinessCaseDataValues(e) {
+  //alert("event:" + e.target.value);
+  let { manageBusinessCase } = this.state;
+  let { business_case_data } = manageBusinessCase;
+  business_case_data[e.target.name] = e.target.value;
+  this.setState({
+    manageBusinessCase
+  });
+}
+
+onChangeBusinessCaseDataManagementValues(e) {
+  //alert("event:" + e.target.value);
+  let { manageBusinessCase } = this.state;
+  let { business_case_data_management } = manageBusinessCase;
+  business_case_data_management[e.target.name] = e.target.value;
+  this.setState({
+    manageBusinessCase
+  });
+}
+
+onChangeCommentsValues(e){
+  let { manageBusinessCase } = this.state;
+  let { comments } = manageBusinessCase;
+  comments[e.target.name] = e.target.value;
+  this.setState({
+    manageBusinessCase
+  });
+}
+
+saveAsDraftMethod(){
+  const off_payroll_date = document.getElementById("off_payroll_date")
+  .value;
+  let {manageBusinessCase} = this.state
+let { business_case_data_management } = manageBusinessCase;
+business_case_data_management.off_payroll_date = off_payroll_date;
+  console.log('saveAsDraftMethod: ', manageBusinessCase)
+}
+
     render(){
+      let {plan, business_case_number,business_case_data,business_case_data_management, rif_information, comments} = this.state.manageBusinessCase
         return (
             <>
                 <div id="tabTwo" className="tab-pane fade ">
@@ -12,7 +102,7 @@ class Tab2_CreateManageBusiness extends Component{
                       <div className="col-md-4">
                         <div className="labelgrid-group">
                           <label className="control-label labelredTheme">
-                            Plan :
+                            Plan :{plan}
                           </label>
                           <div className="labelgrid">
                             Plan: Mgmt Prog Enterprise Wireline
@@ -22,7 +112,7 @@ class Tab2_CreateManageBusiness extends Component{
                       <div className="col-md-8">
                         <div className="labelgrid-group topRightlabel">
                           <label className="control-label labelredTheme">
-                            Business Case Number :{" "}
+                            Business Case Number :{business_case_number}
                           </label>
                           <div className="labelgrid">New</div>
                         </div>
@@ -125,6 +215,11 @@ class Tab2_CreateManageBusiness extends Component{
                                                 <input
                                                   type="text"
                                                   className="form-control"
+                                                  value={business_case_data.contract_company_name}
+                                name="contract_company_name"
+                                onChange={this.onChangeBusinessCaseDataValues.bind(
+                                  this
+                                )}
                                                 />{" "}
                                               </div>
                                             </div>
@@ -150,6 +245,7 @@ class Tab2_CreateManageBusiness extends Component{
                                                   className="form-control"
                                                   disabled
                                                   name="date"
+                                                  
                                                 />{" "}
                                                 <span className="input-group-addon add-on">
                                                   <span className="glyphicon glyphicon-calendar"></span>
@@ -180,6 +276,11 @@ class Tab2_CreateManageBusiness extends Component{
                                             type="text"
                                             className="form-control"
                                             placeholder="Search"
+                                            value={business_case_data.selection_manager}
+                                            name="selection_manager"
+                                            onChange={this.onChangeBusinessCaseDataValues.bind(
+                                              this
+                                            )}
                                           />
                                           <div className="input-group-btn">
                                             <button
@@ -222,6 +323,11 @@ class Tab2_CreateManageBusiness extends Component{
                                             type="text"
                                             className="form-control"
                                             placeholder="Search"
+                                            value={business_case_data.hrbp}
+                                            name="hrbp"
+                                            onChange={this.onChangeBusinessCaseDataValues.bind(
+                                              this
+                                            )}
                                           />
                                           <div className="input-group-btn">
                                             <button
@@ -285,6 +391,11 @@ class Tab2_CreateManageBusiness extends Component{
                                             type="text"
                                             className="form-control"
                                             placeholder="Search"
+                                            value={business_case_data.hrbp_backup_support}
+                                            name="hrbp_backup_support"
+                                            onChange={this.onChangeBusinessCaseDataValues.bind(
+                                              this
+                                            )}
                                           />
                                           <div className="input-group-btn">
                                             <button
@@ -323,6 +434,11 @@ class Tab2_CreateManageBusiness extends Component{
                                             type="text"
                                             className="form-control"
                                             placeholder="Search"
+                                            value={business_case_data.servarance_sme}
+                                            name="servarance_sme"
+                                            onChange={this.onChangeBusinessCaseDataValues.bind(
+                                              this
+                                            )}
                                           />
                                           <div className="input-group-btn">
                                             <button
@@ -354,6 +470,11 @@ class Tab2_CreateManageBusiness extends Component{
                                             type="text"
                                             className="form-control"
                                             placeholder="Search"
+                                            value={business_case_data.legal_contact}
+                                            name="legal_contact"
+                                            onChange={this.onChangeBusinessCaseDataValues.bind(
+                                              this
+                                            )}
                                           />
                                           <div className="input-group-btn">
                                             <button
@@ -430,7 +551,9 @@ class Tab2_CreateManageBusiness extends Component{
                                       <div className="col-padding">
                                         <div className="row">
                                           <div className="col-md-4 col-sm-12">
-                                            <select className="select-dropbox">
+                                            <select className="select-dropbox" 
+                                            onChange={this.onChangeBusinessCaseDataManagementValues.bind(this)}
+                                            name ="change_in_business_status">
                                               <option>
                                                 Change in Business Strategy
                                               </option>
@@ -441,7 +564,8 @@ class Tab2_CreateManageBusiness extends Component{
                                             </select>
                                           </div>
                                           <div className="col-md-4">
-                                            <select className="select-dropbox">
+                                            <select className="select-dropbox" onChange={this.onChangeBusinessCaseDataManagementValues.bind(this)}
+                                            name ="change_in_business_status">
                                               <option>
                                                 Too Meet Budgetary Initiatives
                                               </option>
@@ -452,7 +576,10 @@ class Tab2_CreateManageBusiness extends Component{
                                             </select>
                                           </div>
                                           <div className="col-md-4">
-                                            <select className="select-dropbox">
+                                            <select className="select-dropbox" 
+                                            onChange={this.onChangeBusinessCaseDataManagementValues.bind(this)}
+                                            name ="too_meet_budjetry_initiates"
+                                            >
                                               <option></option>
                                               <option>load content</option>
                                               <option>load content</option>
@@ -502,6 +629,11 @@ class Tab2_CreateManageBusiness extends Component{
                                             type="text"
                                             className="form-control"
                                             name="date"
+                                            id="off_payroll_date"
+                                            
+                                onChange={this.onChangeBusinessCaseDataManagementValues.bind(
+                                  this
+                                )}
                                           />{" "}
                                           <span className="input-group-addon add-on">
                                             <span className="glyphicon glyphicon-calendar"></span>
@@ -525,6 +657,9 @@ class Tab2_CreateManageBusiness extends Component{
                                           type="text"
                                           className="form-control"
                                           placeholder=""
+                                          name="notification_period_plan"
+                                          onChange={this.onChangeBusinessCaseDataManagementValues.bind(this)}
+                                          value={business_case_data_management.notification_period_plan}
                                         />{" "}
                                       </div>
                                     </div>
@@ -771,6 +906,9 @@ class Tab2_CreateManageBusiness extends Component{
                                           className="form-control"
                                           rows="5"
                                           id="commentBox"
+                                          name="comment"
+                                          value={comments.comment}
+                                          onChange={this.onChangeCommentsValues.bind(this)}
                                         ></textarea>
                                       </div>{" "}
                                     </div>
@@ -835,6 +973,7 @@ class Tab2_CreateManageBusiness extends Component{
                                       <button
                                         type="button"
                                         className="btn btn-primary btn-saveDraft btn-black-medium"
+                                        onClick = {this.saveAsDraftMethod.bind(this)}
                                       >
                                         Save as Draft
                                       </button>

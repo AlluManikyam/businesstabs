@@ -42,7 +42,10 @@ export default class TabsList extends Component {
           {TabsListArray.map((result, i) => {
             let tabName = result.tab_name;
             return (
-              <li className={tabName === "Add Business Case" ? "active" : null}>
+              <li
+                className={tabName === "Add Business Case" ? "active" : null}
+                key={i}
+              >
                 <a data-toggle="tab" href={result.tab_path}>
                   {result.tab_name}
                 </a>
