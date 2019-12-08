@@ -9,12 +9,25 @@
     height: auto;
     position: relative;
     float: left;
-   
-    
+  }
+  .error{
+      font-size: 15px;
+      color:red;
+     }
+  .offPayRollDate{
+    width: 100%;
+  }
+  .offPayRollDate input{
+      border: none!important
   }
 
+  .offPayRollDate .react-date-picker__wrapper{
+    width: 100%;
+  }
+  
+
   .disabled {
-    /* display: none !important; */
+    display: none !important;
     pointer-events:none; 
     opacity:0.6;    
   }

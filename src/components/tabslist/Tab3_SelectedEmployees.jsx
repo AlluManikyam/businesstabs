@@ -37,7 +37,8 @@ class Tab3_SelectedEmployees extends Component {
                         <div className="row">
                           <div className="col-md-2">
                             <div className="form-group">
-                              <label>SetID:</label>
+                              <label>SetID:</label>    type="text"
+                                className="form-control"
                             </div>
                           </div>
                           <div className="col-md-3">

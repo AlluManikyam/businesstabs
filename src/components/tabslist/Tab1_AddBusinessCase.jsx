@@ -68,7 +68,18 @@ class Tab1_AddBusinessCase extends Component {
     plan_table.effective_date = effective_date;
     plan_table.batch_rpt_from_date = batch_rpt_from_date;
     plan_table.batch_rpt_to_date = batch_rpt_to_date;
-
+    document.getElementById("errorPlan").innerHTML=""
+    document.getElementById("errorSetId").innerHTML=""
+    if(addBusinessCase.plan_code===""){
+      document.getElementById("errorPlan").innerHTML="Please Enter Plancode"
+      window.scrollTo(0,0)
+    }
+    if(addBusinessCase.set_id===""){
+      document.getElementById("errorSetId").innerHTML="Please Enter Set ID"
+      window.scrollTo(0,0)
+    }
+    if(addBusinessCase.plan_code!==""&&addBusinessCase.set_id!==""){
+     
     // API calling
     commonUtils.storeAddBusinessCase(addBusinessCase).then((data)=>{
       if (data) {
@@ -86,6 +97,8 @@ class Tab1_AddBusinessCase extends Component {
       console.log("error",err)
 
     })
+    }
+    
    
   }
 
@@ -100,7 +113,7 @@ class Tab1_AddBusinessCase extends Component {
               className="form-horizontal plancodeForm"
               id="form_businesscase"
             >
-              <div className="row">
+              <div className="row align-items-center">
                 <div className="col-md-1">
                   <label className="control-label addformleftlable">
                     Plan Code :
@@ -116,10 +129,13 @@ class Tab1_AddBusinessCase extends Component {
                     placeholder="RIFV"
                     id="planName-input"
                   />
+                
                   <span className="glyphicon glyphicon-search form-control-feedback"></span>
                 </div>
+                <div className="error" id="errorPlan"></div>
+                
               </div>
-              <div className="row">
+              <div className="row align-items-center">
                 <div className="col-md-1">
                   <label className="control-label addformleftlable">
                     SetID :
@@ -137,6 +153,7 @@ class Tab1_AddBusinessCase extends Component {
                     id="setId-input"
                   />
                 </div>
+                <div className="error" id="errorSetId"></div>
               </div>
               <div className="row">
                 <div className="col-md-1">

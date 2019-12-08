@@ -1,8 +1,11 @@
 import React,{Component} from 'react';
 import { connect } from "react-redux";
 import store from "../../redux/store";
+import DatePicker from 'react-date-picker';
 
 import {storeManageBusinessCaseData} from "../../redux/actions/fmsActions";
+import { parse } from 'url';
+var moment = require('moment');
 
 
 class Tab2_CreateManageBusiness extends Component{
@@ -30,10 +33,10 @@ class Tab2_CreateManageBusiness extends Component{
       change_in_business_status:"Active",
       too_meet_budjetry_initiates: "Active",
       status:"Active",
-      notification_date: "02/12/2019",
-      off_payroll_date: "20/12/2019",
-      notification_period_plan: "20",
-      last_day_worked: "1"
+      notification_date: "",
+      off_payroll_date: new Date(),
+      notification_period_plan: "",
+      last_day_worked: ""
     },
     rif_information: {
       type_of_rif: "",
@@ -46,7 +49,7 @@ class Tab2_CreateManageBusiness extends Component{
       number_to_be_reduced: ""
     },
     comments: {
-      date_time_entered: "",
+      date_time_entered: new Date(),
       entered_by: "",
       comment: "",
       created_by: "",
@@ -77,10 +80,60 @@ onChangeBusinessCaseDataValues(e) {
   });
 }
 
+onChangeOffPayRollDate = date => 
+{
+  let { manageBusinessCase } = this.state;
+  let { business_case_data_management } = manageBusinessCase;
+  business_case_data_management["off_payroll_date"] = date;
+  if(date&&business_case_data_management.notification_period_plan!=""){
+
+    // Notification Date
+    let notificationDate = new Date(date);
+    let notificationPeriodPlan=parseInt(business_case_data_management.notification_period_plan)
+    notificationDate.setDate(date.getDate() + notificationPeriodPlan);
+    let FormattedNofiDate = moment(notificationDate, "x").format("DD/MM/YYYY") 
+    
+    // Last Day Worked
+    let lastDayWorked = new Date(date);
+    lastDayWorked.setDate(date.getDate() -1);
+    let FormattedlastDayWorkedDate =moment(lastDayWorked, "x").format("DD/MM/YYYY") 
+    business_case_data_management["notification_date"] = FormattedNofiDate;
+    business_case_data_management["last_day_worked"] = FormattedlastDayWorkedDate;
+
+  }else{
+    business_case_data_management["notification_date"] = "";
+    business_case_data_management["last_day_worked"] = "";
+  }
+  
+  
+  this.setState({ manageBusinessCase })
+}
+
 onChangeBusinessCaseDataManagementValues(e) {
   let { manageBusinessCase } = this.state;
   let { business_case_data_management } = manageBusinessCase;
   business_case_data_management[e.target.name] = e.target.value;
+  if(business_case_data_management.off_payroll_date!=""&&business_case_data_management.notification_period_plan!=""){
+
+    // Notification Date
+    let date=business_case_data_management.off_payroll_date
+    let notificationDate = new Date(date);
+    let notificationPeriodPlan=parseInt(business_case_data_management.notification_period_plan)
+    notificationDate.setDate(date.getDate() + notificationPeriodPlan);
+    let FormattedNofiDate = moment(notificationDate, "x").format("DD/MM/YYYY") 
+    
+    // Last Day Worked
+    let lastDayWorked = new Date(date);
+    lastDayWorked.setDate(date.getDate() -1);
+    let FormattedlastDayWorkedDate =moment(lastDayWorked, "x").format("DD/MM/YYYY") 
+    business_case_data_management["notification_date"] = FormattedNofiDate;
+    business_case_data_management["last_day_worked"] = FormattedlastDayWorkedDate;
+
+  }else{
+    business_case_data_management["notification_date"] = "";
+    business_case_data_management["last_day_worked"] = "";
+  }
+  
   this.setState({
     manageBusinessCase
   });
@@ -96,11 +149,7 @@ onChangeCommentsValues(e){
 }
 
   saveAsDraftMethod() {
-    const off_payroll_date = document.getElementById("off_payroll_date")
-      .value;
     let { manageBusinessCase } = this.state
-    let { business_case_data_management } = manageBusinessCase;
-    business_case_data_management.off_payroll_date = off_payroll_date;
     this.props.storeManageBusinessCaseData(manageBusinessCase);
     console.log("stprrrrrr",store.getState())
     this.props.changeCurrentTab(3, "tabThree")
@@ -622,7 +671,7 @@ onChangeCommentsValues(e){
                                       </div>
                                       <div className="col-md-4">
                                         <label className="labelDate">
-                                          02/22/2019
+                                          {business_case_data_management.notification_date}
                                         </label>
                                       </div>
                                     </div>
@@ -637,25 +686,14 @@ onChangeCommentsValues(e){
                                           </label>
                                         </div>
                                       </div>
-                                      <div className="col-md-4 date">
-                                        <div
-                                          className="input-group input-append date"
-                                          id="datePicker"
-                                        >
-                                          <input
-                                            type="text"
-                                            className="form-control"
-                                            name="date"
-                                            id="off_payroll_date"
-                                            
-                                onChange={this.onChangeBusinessCaseDataManagementValues.bind(
-                                  this
-                                )}
-                                          />{" "}
-                                          <span className="input-group-addon add-on">
-                                            <span className="glyphicon glyphicon-calendar"></span>
-                                          </span>
-                                        </div>
+                                      <div className="col-md-4">
+                                      <div className="w-100">
+                                          <DatePicker
+                                            className="offPayRollDate"
+                                            onChange={this.onChangeOffPayRollDate}
+                                            value={business_case_data_management.off_payroll_date}
+                                          />
+                                         </div>
                                       </div>
                                     </div>
                                     <div className="row">
@@ -693,7 +731,7 @@ onChangeCommentsValues(e){
                                       </div>
                                       <div className="col-md-4">
                                         <label className="labelDate">
-                                          03/23/2019
+                                          {business_case_data_management.last_day_worked}
                                         </label>
                                       </div>
                                     </div>
@@ -906,7 +944,7 @@ onChangeCommentsValues(e){
                                     </div>
                                     <div className="col-md-2">
                                       <label className="labelDate">
-                                        03/23/2019
+                                       {moment(comments.date_time_entered, "x").format("DD/MM/YYYY") }
                                       </label>
                                     </div>
                                     <div className="col-md-3">
