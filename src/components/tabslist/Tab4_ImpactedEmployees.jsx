@@ -1,6 +1,37 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import BootstrapTable from "../common/BootstrapTable";
+import {storeSelectedEmployees} from "../../redux/actions/fmsActions";
 
 class Tab4_ImpactedEmployees extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    selectedEmployees:[],
+    addBusinessCase:props.fmsData.businessCaseData
+    }
+  }
+
+  componentWillReceiveProps(props) {
+    if (props && props.fmsData && props.fmsData.businessCaseData) {
+      console.log("Store Reducerssss tab3", props);
+      this.setState({
+        addBusinessCase: props.fmsData.businessCaseData
+      });
+    }
+  }
+
+  getSelectedEmployees(empList){
+    this.setState({
+      selectedEmployees:empList
+    })
+  }
+
+  saveAsDraftMethod() {
+    const {selectedEmployees}=this.state
+    this.props.storeSelectedEmployees(selectedEmployees)
+    this.props.changeCurrentTab(5, "tabFive")
+  }
   render() {
     return (
       <>
@@ -65,28 +96,8 @@ class Tab4_ImpactedEmployees extends Component {
                       <div className="emp-tableBlock">
                         <div className="commentsGrid">Employee</div>
                         <div className="commentsTab">
-                          <div className="findEmp">
-                            <table
-                              id="impactEmp"
-                              className="table table-bordered table-striped"
-                              cellspacing="0"
-                              width="100%"
-                            >
-                              <thead>
-                                <tr>
-                                  <th></th>
-                                  <th scope="col">Business Case Number</th>
-
-                                  <th scope="col">Plan</th>
-                                  <th scope="col">Name</th>
-                                  <th scope="col">Employee ID</th>
-                                  <th scope="col">Band</th>
-                                  <th scope="col">Location Description</th>
-                                  <th scope="col">Job Title</th>
-                                  <th scope="col">Job Entry Date</th>
-                                </tr>
-                              </thead>
-                            </table>
+                          <div className="selectedEmp">
+                            <BootstrapTable  selectedEmp={this.getSelectedEmployees.bind(this)}/>
                           </div>
                         </div>
                         <div className="row rowbottomspace">
@@ -108,6 +119,7 @@ class Tab4_ImpactedEmployees extends Component {
                                 <button
                                   type="button"
                                   className="btn btn-primary btn-saveDraft btn-black-medium"
+                                  onClick={this.saveAsDraftMethod.bind(this)}
                                 >
                                   Save as Draft
                                 </button>
@@ -134,4 +146,6 @@ class Tab4_ImpactedEmployees extends Component {
   }
 }
 
-export default Tab4_ImpactedEmployees;
+export default connect(state => ({ fmsData: state.fpms_reducer }),{storeSelectedEmployees})(
+  Tab4_ImpactedEmployees
+);

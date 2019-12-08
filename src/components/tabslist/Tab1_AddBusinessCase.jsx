@@ -174,7 +174,7 @@ class Tab1_AddBusinessCase extends Component {
                 </div>
               </div>
               <div className="row">
-                {" "}
+                {/* {" "}
                 <div id="home" className="tab-pane fade ">
                   <div className="container-fluid">
                     <div className="findEmp">
@@ -204,7 +204,7 @@ class Tab1_AddBusinessCase extends Component {
                       </table>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div className="col-md-7 ">
                   <button
                     type="button"

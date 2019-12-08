@@ -25,6 +25,7 @@ class businesscase extends Component {
       for(let i=0;i<activeListClasses.length;i++){
         activeListClasses[i].classList.remove("active")
       }
+      // alert(tabName)
       document.getElementById(tabName).classList.add("active")
     })
   }
@@ -42,9 +43,9 @@ class businesscase extends Component {
              <FindExistingBusinessCase/>
              <AddBusinessCase changeCurrentTab={this.setCurrentTab}/>
              <CreateManageBusiness  changeCurrentTab={this.setCurrentTab}/>
-             <SelectedEmployees/>
-             <ImpactedEmployees/>
-             <EmployeeInfo/>
+             <SelectedEmployees changeCurrentTab={this.setCurrentTab}/>
+             <ImpactedEmployees changeCurrentTab={this.setCurrentTab}/>
+             <EmployeeInfo changeCurrentTab={this.setCurrentTab}/>
             </div>
           </div>
         </div>

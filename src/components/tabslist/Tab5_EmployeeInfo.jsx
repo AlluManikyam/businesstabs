@@ -1,6 +1,32 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import BootstrapTable from "../common/BootstrapTable";
+
 
 class Tab5_EmployeeInfo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    selectedEmployeesList:[],
+    addBusinessCase:props.fmsData.businessCaseData
+    }
+  }
+
+  componentWillReceiveProps(props) {
+    if (props && props.fmsData && props.fmsData.businessCaseData) {
+      console.log("Store Reducerssss tab3", props);
+      this.setState({
+        addBusinessCase: props.fmsData.businessCaseData,
+        selectedEmployeesList:props.fmsData.selectedEmployees
+      });
+    }
+  }
+
+  saveAndSubmitMethod() {
+    this.props.changeCurrentTab(0, "home")
+  }
+
+
   render() {
     return (
       <>
@@ -65,32 +91,8 @@ class Tab5_EmployeeInfo extends Component {
                       <div className="emp-tableBlock">
                         <div className="commentsGrid">table Name</div>
                         <div className="commentsTab">
-                          <div className="findEmp">
-                            <table
-                              id="empInfo"
-                              className="table table-bordered table-striped"
-                              cellspacing="0"
-                              width="100%"
-                            >
-                              <thead>
-                                <tr>
-                                  <th></th>
-                                  <th scope="col">Name</th>
-
-                                  <th scope="col">Band</th>
-                                  <th scope="col">Employee ID</th>
-                                  <th scope="col">Location Description</th>
-                                  <th scope="col">Job Title</th>
-                                  <th scope="col">Job Entry Date</th>
-                                  <th scope="col">Gender</th>
-                                  <th scope="col">Ethnicity</th>
-                                  <th scope="col">Age</th>
-                                  <th scope="col">Years of Service</th>
-                                  <th scope="col">RIF Status</th>
-                                  <th scope="col">Service Date</th>
-                                </tr>
-                              </thead>
-                            </table>
+                          <div className="selectedEmp">
+                            <BootstrapTable tableData={this.state.selectedEmployeesList} tableName="selectEmps" />
                           </div>
                         </div>
                         <div className="row rowbottomspace">
@@ -113,7 +115,8 @@ class Tab5_EmployeeInfo extends Component {
                                 <button
                                   type="button"
                                   className="btn btn-primary btn-saveSubmint btn-black-medium"
-                                >
+                                  onClick={this.saveAndSubmitMethod.bind(this)}
+                               >
                                   Save and Submit
                                 </button>
                                 <button
@@ -139,4 +142,7 @@ class Tab5_EmployeeInfo extends Component {
   }
 }
 
-export default Tab5_EmployeeInfo;
+export default connect(state => ({ fmsData: state.fpms_reducer }))(
+  Tab5_EmployeeInfo
+);
+

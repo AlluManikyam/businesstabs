@@ -42,7 +42,7 @@ export default class TabsList extends Component {
   }
   
   componentWillReceiveProps(props){
-    if(props.currentTab){
+    if(props.currentTab>-1){
       this.setState({
         currentTab:props.currentTab
       },()=>{
@@ -64,7 +64,7 @@ export default class TabsList extends Component {
           {TabsListArray.map((result, i) => {
             return (
               <li
-                className={`${result.tabStatus} ${i === currentTab ? "active" : null}`}
+                className={`${result.tabStatus} ${i === currentTab ? "active" : ""}`}
                 key={i}
                 disable={result.disable}
                 id={`tab${i}`}

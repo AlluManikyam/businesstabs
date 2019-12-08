@@ -1,7 +1,8 @@
 import {initialState} from './initialState';
 import {
 	BUSINESS_CASE_DATA,
-	MANAGE_BUSINESS_CASE_DATA
+	MANAGE_BUSINESS_CASE_DATA,
+	MANAGE_SELECTED_EMPLOYEES
   } from "./actions/types";
 
 
@@ -20,6 +21,13 @@ switch (action.type) {
 		isLoading: false,
 		errMess: "",
 		manageBusinessCaseData: action.payload
+	};
+	case MANAGE_SELECTED_EMPLOYEES:
+	return {
+		...state,
+		isLoading: false,
+		errMess: "",
+		selectedEmployees: action.payload
 	};
  default:
    return state
