@@ -1,0 +1,107 @@
+.MuiFormLabel-root-234,
+.MuiSelect-selectMenu-275,
+.MuiFormLabel-root-86,
+.MuiSelect-selectMenu-127 {
+  text-align: left !important;
+}
+.MuiFormLabel-root-86 {
+  padding-top: "26px";
+}
+.MuiFormGroup-root-143 {
+  flex-direction: row !important;
+}
+.PatientDetailsForm-paper-207 {
+  margin-top: 0 !important;
+}
+
+.react-bs-table-tool-bar .row div:nth-child(1n) {
+  order: 1;
+}
+.react-bs-table-tool-bar .row div:nth-child(2n) {
+  order: 0;
+}
+
+.addedspan {
+  order: 0;
+  margin-right: 5px;
+  position: relative;
+  top: 0px;
+}
+
+.react-bs-table-pagination .row div:nth-child(1) {
+  display: flex;
+  align-items: center;
+}
+.react-bs-table-pagination .row div:nth-child(2) {
+  top: 8px;
+}
+
+.react-bs-table-pagination .react-bs-table-sizePerPage-dropdown {
+  order: 1;
+}
+/* Show records css end */
+
+.searchresults {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.react-bs-container-body .table td,
+.table th {
+  padding: 0.25rem 0.25rem 0.25rem 0.75rem;
+  vertical-align: baseline;
+}
+.react-bs-container-body .table td {
+  padding: 8px 10px;
+}
+
+#pageDropDown {
+  color: #000 !important;
+  background-color: #fff !important;
+}
+.loading {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.acuty-table thead {
+  background: #2a2d31;
+  color: #fff;
+}
+
+.page-link {
+  color: #333;
+  border: none;
+  background-color: transparent;
+}
+.page-link:hover {
+  z-index: 2;
+  color: #fff;
+  text-decoration: none;
+  background-color: #000;
+  border-color: #dee2e6;
+}
+.page-item.active .page-link {
+  z-index: 1;
+  color: #333 !important;
+  border: 1px solid #979797;
+  background-color: white;
+}
+
+.page-link:focus {
+  z-index: 2;
+  outline: 0;
+  box-shadow: none;
+}
+
+tr:hover {
+  background: rgba(0, 0, 0, 0.075);
+}
+
+.visitedName:hover {
+  background: #2a2d31;
+  color: #fff;
+  cursor: pointer;
+}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import BootstrapTable from "../common/BootstrapTable";
 
 class Tab0_FindExistingBusinessCase extends Component {
   render() {
@@ -6,8 +7,7 @@ class Tab0_FindExistingBusinessCase extends Component {
       <>
         <div id="home" className="tab-pane fade ">
           <div className="container-fluid">
-            <div className="findEmp">
-              <table
+            {/* <table
                 id="findExitemp"
                 className="table table-bordered table-striped"
                 cellspacing="0"
@@ -29,7 +29,9 @@ class Tab0_FindExistingBusinessCase extends Component {
                     <th scope="col">Employee Name</th>
                   </tr>
                 </thead>
-              </table>
+              </table> */}
+            <div className="selectedEmp">
+              <BootstrapTable />
             </div>
           </div>
         </div>

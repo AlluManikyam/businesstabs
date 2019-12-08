@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import BootstrapTable from "../common/BootstrapTable";
 
 class Tab5_EmployeeInfo extends Component {
   render() {
@@ -65,32 +66,8 @@ class Tab5_EmployeeInfo extends Component {
                       <div className="emp-tableBlock">
                         <div className="commentsGrid">table Name</div>
                         <div className="commentsTab">
-                          <div className="findEmp">
-                            <table
-                              id="empInfo"
-                              className="table table-bordered table-striped"
-                              cellspacing="0"
-                              width="100%"
-                            >
-                              <thead>
-                                <tr>
-                                  <th></th>
-                                  <th scope="col">Name</th>
-
-                                  <th scope="col">Band</th>
-                                  <th scope="col">Employee ID</th>
-                                  <th scope="col">Location Description</th>
-                                  <th scope="col">Job Title</th>
-                                  <th scope="col">Job Entry Date</th>
-                                  <th scope="col">Gender</th>
-                                  <th scope="col">Ethnicity</th>
-                                  <th scope="col">Age</th>
-                                  <th scope="col">Years of Service</th>
-                                  <th scope="col">RIF Status</th>
-                                  <th scope="col">Service Date</th>
-                                </tr>
-                              </thead>
-                            </table>
+                          <div className="selectedEmp">
+                            <BootstrapTable />
                           </div>
                         </div>
                         <div className="row rowbottomspace">

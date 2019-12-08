@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import BootstrapTable from "../common/BootstrapTable";
 
 class Tab3_SelectedEmployees extends Component {
   constructor(props) {
@@ -61,7 +62,7 @@ class Tab3_SelectedEmployees extends Component {
     let { plan_code, plan_table } = this.state.addBusinessCase;
     return (
       <>
-        <div id="tabThree" className="tab-pane fade ">
+        <div id="tabThree" className="tab-pane fade">
           <div className="BusinesscaseSelectedemp">
             <div className="container-fluid">
               <div className="row">
@@ -420,31 +421,8 @@ class Tab3_SelectedEmployees extends Component {
                   </div>
                 </div>
 
-                <div className="findEmp">
-                  <table
-                    id="SelectEmp"
-                    className="table table-bordered table-striped"
-                    cellspacing="0"
-                    width="100%"
-                  >
-                    <thead>
-                      <tr>
-                        <th></th>
-                        <th scope="col">SetID</th>
-
-                        <th scope="col">Company</th>
-                        <th scope="col">Cost Center</th>
-                        <th scope="col">Location Code</th>
-                        <th scope="col">Career Brand</th>
-                        <th scope="col">Supervisor EID</th>
-                        <th scope="col">Job Code</th>
-                        <th scope="col">Emp Id</th>
-                        <th scope="col">Employee EID</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                      </tr>
-                    </thead>
-                  </table>
+                <div className="selectedEmp">
+                  <BootstrapTable />
                 </div>
                 <div className="row rowbottomspace">
                   <div className="col-md-8 ">
