@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import BootstrapTable from "../common/BootstrapTable";
-import {storeSelectedEmployees} from "../../redux/actions/fmsActions";
+import { storeSelectedEmployees } from "../../redux/actions/fmsActions";
 
 class Tab4_ImpactedEmployees extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    selectedEmployees:[],
-    addBusinessCase:props.fmsData.businessCaseData
-    }
+      selectedEmployees: [],
+      addBusinessCase: props.fmsData.businessCaseData
+    };
   }
 
   componentWillReceiveProps(props) {
@@ -21,18 +21,19 @@ class Tab4_ImpactedEmployees extends Component {
     }
   }
 
-  getSelectedEmployees(empList){
+  getSelectedEmployees(empList) {
     this.setState({
-      selectedEmployees:empList
-    })
+      selectedEmployees: empList
+    });
   }
 
   saveAsDraftMethod() {
-    const {selectedEmployees}=this.state
-    this.props.storeSelectedEmployees(selectedEmployees)
-    this.props.changeCurrentTab(5, "tabFive")
+    const { selectedEmployees } = this.state;
+    this.props.storeSelectedEmployees(selectedEmployees);
+    this.props.changeCurrentTab(5, "tabFive");
   }
   render() {
+    let { plan_code, set_id, plan_table } = this.state.addBusinessCase;
     return (
       <>
         <div id="tabFour" className="tab-pane fade ">
@@ -44,9 +45,7 @@ class Tab4_ImpactedEmployees extends Component {
                     <label className="control-label labelredTheme">
                       Plan :
                     </label>
-                    <div className="labelgrid">
-                      Mgmt Prog Enterprise Wireline
-                    </div>
+                    <div className="labelgrid">{plan_code}</div>
                   </div>
                 </div>
                 <div className="col-md-8">
@@ -54,7 +53,7 @@ class Tab4_ImpactedEmployees extends Component {
                     <label className="control-label labelredTheme">
                       Business Case number :{" "}
                     </label>
-                    <div className="labelgrid">RIFV109147</div>
+                    <div className="labelgrid">{plan_code}0001</div>
                   </div>
                 </div>
               </div>
@@ -97,7 +96,9 @@ class Tab4_ImpactedEmployees extends Component {
                         <div className="commentsGrid">Employee</div>
                         <div className="commentsTab">
                           <div className="selectedEmp">
-                            <BootstrapTable  selectedEmp={this.getSelectedEmployees.bind(this)}/>
+                            <BootstrapTable
+                              selectedEmp={this.getSelectedEmployees.bind(this)}
+                            />
                           </div>
                         </div>
                         <div className="row rowbottomspace">
@@ -146,6 +147,6 @@ class Tab4_ImpactedEmployees extends Component {
   }
 }
 
-export default connect(state => ({ fmsData: state.fpms_reducer }),{storeSelectedEmployees})(
-  Tab4_ImpactedEmployees
-);
+export default connect(state => ({ fmsData: state.fpms_reducer }), {
+  storeSelectedEmployees
+})(Tab4_ImpactedEmployees);

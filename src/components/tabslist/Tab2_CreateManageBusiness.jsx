@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import { connect } from "react-redux";
 import store from "../../redux/store";
 import DatePicker from 'react-date-picker';
+import config from '../../constants/global'
 
 import {storeManageBusinessCaseData} from "../../redux/actions/fmsActions";
 import { parse } from 'url';
@@ -13,6 +14,12 @@ class Tab2_CreateManageBusiness extends Component{
     super(props);
     this.state = {
     addBusinessCase:props.fmsData.businessCaseData,
+    searchArray:config.searchArray,
+    selection_manager_search_data:{},
+    hrbp_search_data:{},
+    servarance_sme_search_data:{},
+    hrbp_backup_support_search_data:{},
+    leagal_contact_search_data:{},
     manageBusinessCase: {
     plan: "",
     business_case_number: "",
@@ -63,6 +70,26 @@ class Tab2_CreateManageBusiness extends Component{
   
 }
 
+searchMethod(searchtype, searchtext){
+  //let lcase= toLowerCase()
+  let {searchArray} = this.state;
+  let getsearchData = searchArray.filter((res, i)=>{
+    return res.name.toLowerCase()=== searchtext.toLowerCase()
+  })
+  if(getsearchData.length >0){
+    this.setState({
+      [searchtype]:getsearchData[0]
+    })
+  }else {
+    this.setState({
+      [searchtype]:'404'
+    })
+  }
+  
+  console.log('search',JSON.stringify(getsearchData))
+
+}
+
 componentWillReceiveProps(props){
   if(props&&props.fmsData&&props.fmsData.businessCaseData){
     console.log("Store Reducerssss Tab2",props)
@@ -85,7 +112,7 @@ onChangeOffPayRollDate = date =>
   let { manageBusinessCase } = this.state;
   let { business_case_data_management } = manageBusinessCase;
   business_case_data_management["off_payroll_date"] = date;
-  if(date&&business_case_data_management.notification_period_plan!=""){
+  if(date&&business_case_data_management.notification_period_plan!==""){
 
     // Notification Date
     let notificationDate = new Date(date);
@@ -113,19 +140,19 @@ onChangeBusinessCaseDataManagementValues(e) {
   let { manageBusinessCase } = this.state;
   let { business_case_data_management } = manageBusinessCase;
   business_case_data_management[e.target.name] = e.target.value;
-  if(business_case_data_management.off_payroll_date!=""&&business_case_data_management.notification_period_plan!=""){
+  if(business_case_data_management.off_payroll_date!==""&&business_case_data_management.notification_period_plan!==""){
 
     // Notification Date
     let date=business_case_data_management.off_payroll_date
     let notificationDate = new Date(date);
     let notificationPeriodPlan=parseInt(business_case_data_management.notification_period_plan)
-    notificationDate.setDate(date.getDate() + notificationPeriodPlan);
-    let FormattedNofiDate = moment(notificationDate, "x").format("DD/MM/YYYY") 
+    notificationDate.setDate(date.getDate() - notificationPeriodPlan);
+    let FormattedNofiDate = moment(notificationDate, "x").format("MM/DD/YYYY") 
     
     // Last Day Worked
     let lastDayWorked = new Date(date);
     lastDayWorked.setDate(date.getDate() -1);
-    let FormattedlastDayWorkedDate =moment(lastDayWorked, "x").format("DD/MM/YYYY") 
+    let FormattedlastDayWorkedDate =moment(lastDayWorked, "x").format("MM/DD/YYYY") 
     business_case_data_management["notification_date"] = FormattedNofiDate;
     business_case_data_management["last_day_worked"] = FormattedlastDayWorkedDate;
 
@@ -157,6 +184,9 @@ onChangeCommentsValues(e){
   }
 
     render(){
+      let {selection_manager_search_data, hrbp_search_data,    servarance_sme_search_data,
+      hrbp_backup_support_search_data,
+      leagal_contact_search_data} = this.state
       let {plan, business_case_number,business_case_data,business_case_data_management, comments} = this.state.manageBusinessCase
       let { plan_code, set_id, plan_table } = this.state.addBusinessCase;
         return (
@@ -168,19 +198,20 @@ onChangeCommentsValues(e){
                       <div className="col-md-4">
                         <div className="labelgrid-group">
                           <label className="control-label labelredTheme">
-                            Plan :{plan}
+                            Plan :
                           </label>
                           <div className="labelgrid">
-                            Plan: Mgmt Prog Enterprise Wireline
+                            {plan_code}
                           </div>
                         </div>
                       </div>
                       <div className="col-md-8">
                         <div className="labelgrid-group topRightlabel">
                           <label className="control-label labelredTheme">
-                            Business Case Number :{business_case_number}
+                            Business Case Number :
                           </label>
-                          <div className="labelgrid">New</div>
+                          <div className="labelgrid"> 
+                          {plan_code}0001</div>
                         </div>
                       </div>
                     </div>
@@ -263,8 +294,7 @@ onChangeCommentsValues(e){
                                             </div>
                                             <div className="col-sm-7">
                                               <div className="labelgrid flex-left">
-                                                TECH, ARCH, & PLNG/Uiots YI,
-                                                laaayt S
+                                                {}
                                               </div>
                                             </div>
                                           </div>
@@ -352,6 +382,7 @@ onChangeCommentsValues(e){
                                             <button
                                               className="btn btn-default"
                                               type="submit"
+                                              onClick={this.searchMethod.bind(this,'selection_manager_search_data', business_case_data.selection_manager)}
                                             >
                                               {" "}
                                               <i className="glyphicon glyphicon-search"></i>{" "}
@@ -362,12 +393,12 @@ onChangeCommentsValues(e){
                                       <div className="col-md-5">
                                         <div className="col-sm-4">
                                           <span className="flex-left labelSuccess">
-                                            Siasay, Taita Y
+                                            {Object.keys(selection_manager_search_data).length>0? selection_manager_search_data === '404'?'no results found': `${selection_manager_search_data.name}, ${selection_manager_search_data.location}` :''}
                                           </span>
                                         </div>
                                         <div className="col-sm-7">
                                           <span className="flex-left childlabel">
-                                            664/896-4316
+                                          {selection_manager_search_data !== ''? selection_manager_search_data === '404'?'no results found': selection_manager_search_data.mobile_number:''}
                                           </span>
                                         </div>
                                       </div>
@@ -399,6 +430,7 @@ onChangeCommentsValues(e){
                                             <button
                                               className="btn btn-default"
                                               type="submit"
+                                              onClick={this.searchMethod.bind(this,'hrbp_search_data', business_case_data.hrbp)}
                                             >
                                               {" "}
                                               <i className="glyphicon glyphicon-search"></i>{" "}
@@ -409,12 +441,12 @@ onChangeCommentsValues(e){
                                       <div className="col-md-5">
                                         <div className="col-sm-4">
                                           <span className="flex-left labelSuccess">
-                                            IIayt, Uiat Y
+                                          {Object.keys(hrbp_search_data).length>0? hrbp_search_data === '404'?'no results found': `${hrbp_search_data.name}, ${hrbp_search_data.location}` :''}
                                           </span>
                                         </div>
                                         <div className="col-sm-7">
                                           <span className="flex-left childlabel">
-                                            414/524-0302
+                                          {hrbp_search_data !== ''? hrbp_search_data === '404'?'no results found': hrbp_search_data.mobile_number:''}
                                           </span>
                                         </div>
                                       </div>
@@ -459,6 +491,7 @@ onChangeCommentsValues(e){
                                             placeholder="Search"
                                             value={business_case_data.hrbp_backup_support}
                                             name="hrbp_backup_support"
+                                            
                                             onChange={this.onChangeBusinessCaseDataValues.bind(
                                               this
                                             )}
@@ -467,6 +500,7 @@ onChangeCommentsValues(e){
                                             <button
                                               className="btn btn-default"
                                               type="submit"
+                                              onClick={this.searchMethod.bind(this,'hrbp_backup_support_search_data', business_case_data.hrbp_backup_support)}
                                             >
                                               {" "}
                                               <i className="glyphicon glyphicon-search"></i>{" "}
@@ -477,10 +511,12 @@ onChangeCommentsValues(e){
                                       <div className="col-md-5">
                                         <div className="col-sm-4">
                                           <span className="flex-left labelSuccess">
-                                            Stays, Suyiaa T
+                                          {Object.keys(hrbp_backup_support_search_data).length>0? hrbp_backup_support_search_data === '404'?'no results found': `${hrbp_backup_support_search_data.name}, ${hrbp_backup_support_search_data.location}` :''}
                                           </span>
                                         </div>
-                                        <div className="col-sm-7"></div>
+                                        <div className="col-sm-7">
+                                        {hrbp_backup_support_search_data !== ''? hrbp_backup_support_search_data === '404'?'no results found': hrbp_backup_support_search_data.mobile_number:''}
+                                        </div>
                                       </div>
                                     </div>
                                     <div className="row">
@@ -510,6 +546,7 @@ onChangeCommentsValues(e){
                                             <button
                                               className="btn btn-default"
                                               type="submit"
+                                              onClick={this.searchMethod.bind(this,'servarance_sme_search_data', business_case_data.servarance_sme)}
                                             >
                                               {" "}
                                               <i className="glyphicon glyphicon-search"></i>{" "}
@@ -517,7 +554,17 @@ onChangeCommentsValues(e){
                                           </div>
                                         </div>
                                       </div>
-                                      <div className="col-md-5"> </div>
+                                      <div className="col-md-5"> 
+                                      <div className="col-sm-4">
+                                          <span className="flex-left labelSuccess">
+                                          {Object.keys(servarance_sme_search_data).length>0? servarance_sme_search_data === '404'?'no results found': `${servarance_sme_search_data.name}, ${servarance_sme_search_data.location}` :''}
+                                          </span>
+                                          </div>
+                                          <div className="col-sm-7">
+                                        {servarance_sme_search_data !== ''? servarance_sme_search_data === '404'?'no results found': servarance_sme_search_data.mobile_number:''}
+                                        </div>
+                                     
+                                      </div>
                                     </div>
                                     <div className="row">
                                       <div className="col-md-3">
@@ -546,6 +593,7 @@ onChangeCommentsValues(e){
                                             <button
                                               className="btn btn-default"
                                               type="submit"
+                                              onClick={this.searchMethod.bind(this,'leagal_contact_search_data', business_case_data.legal_contact)}
                                             >
                                               {" "}
                                               <i className="glyphicon glyphicon-search"></i>{" "}
@@ -557,12 +605,12 @@ onChangeCommentsValues(e){
                                         <div className="col-sm-4">
                                           {" "}
                                           <span className="flex-left labelSuccess">
-                                            Syiyi Ast T
+                                          {Object.keys(leagal_contact_search_data).length>0? leagal_contact_search_data === '404'?'no results found': `${leagal_contact_search_data.name}, ${leagal_contact_search_data.location}` :''}
                                           </span>
                                         </div>
                                         <div className="col-sm-7">
                                           <span className="flex-left childlabel">
-                                            526/669-6743
+                                        {leagal_contact_search_data !== ''? leagal_contact_search_data === '404'?'no results found': leagal_contact_search_data.mobile_number:''}
                                           </span>
                                         </div>
                                       </div>

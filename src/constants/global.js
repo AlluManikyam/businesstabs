@@ -56,3 +56,36 @@ module.exports.assessmentsList = [
     last_name: "Allu"
   }
 ];
+
+module.exports.searchArray = [
+  {
+    id: 0,
+    name: "Raju",
+    mobile_number: "55/7855767",
+    location: "Dallas"
+  },
+  {
+    id: 1,
+    name: "Manikyam",
+    mobile_number: "+91 9441136987",
+    location: "Notrdsf"
+  },
+  {
+    id: 2,
+    name: "Srinuvasu",
+    mobile_number: "+414/524-0302",
+    location: "Texas"
+  },
+  {
+    id: 3,
+    name: "Govindu",
+    mobile_number: "+91 9912661587",
+    location: "Srweofhrwre"
+  },
+  {
+    id: 4,
+    name: "Manga",
+    mobile_number: "+91 9912661587",
+    location: "Srcrs"
+  }
+];
