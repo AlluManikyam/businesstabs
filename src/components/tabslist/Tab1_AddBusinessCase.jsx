@@ -90,12 +90,10 @@ class Tab1_AddBusinessCase extends Component {
     document.getElementById("errorSetId").innerHTML=""
     if(addBusinessCase.plan_code===""){
       document.getElementById("errorPlan").innerHTML="Please Enter Plancode"
-      document.getElementById("planCode").style.display = 'none';
       window.scrollTo(0,0)
     }
     if(addBusinessCase.set_id===""){
       document.getElementById("errorSetId").innerHTML="Please Enter Set ID"
-      document.getElementById("planCode").style.display = 'none';
       window.scrollTo(0,0)
     }
     if(addBusinessCase.plan_code!==""&&addBusinessCase.set_id!==""){

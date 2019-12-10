@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { storeSelectedEmployees } from "../../redux/actions/fmsActions";
 import BootstrapTable from "../common/BootstrapTable";
 
 class Tab3_SelectedEmployees extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      selectedEmployeesList:[],
       selectedEmployees: {
         set_id: "",
         supervisor_eid: "",
@@ -37,7 +39,8 @@ class Tab3_SelectedEmployees extends Component {
   }
 
   saveAsDraftMethod() {
-    let { selectedEmployees } = this.state;
+    let { selectedEmployees,selectedEmployeesList } = this.state;
+    this.props.storeSelectedEmployees(selectedEmployeesList);
     this.props.changeCurrentTab(4, "tabFour");
   }
 
@@ -48,6 +51,12 @@ class Tab3_SelectedEmployees extends Component {
         addBusinessCase: props.fmsData.businessCaseData
       });
     }
+  }
+
+  getSelectedEmployees(empList) {
+    this.setState({
+      selectedEmployeesList: empList
+    });
   }
 
   render() {
@@ -427,7 +436,7 @@ class Tab3_SelectedEmployees extends Component {
                 </div>
 
                 <div className="selectedEmp">
-                  <BootstrapTable checkMode=""/>
+                  <BootstrapTable checkMode="checkbox" selectedEmp={this.getSelectedEmployees.bind(this)}/>
                 </div>
                 <div className="row rowbottomspace">
                   <div className="col-md-8 ">
@@ -471,6 +480,8 @@ class Tab3_SelectedEmployees extends Component {
   }
 }
 
-export default connect(state => ({ fmsData: state.fpms_reducer }))(
-  Tab3_SelectedEmployees
-);
+
+export default connect(state => ({ fmsData: state.fpms_reducer }), {
+  storeSelectedEmployees
+})(Tab3_SelectedEmployees);
+

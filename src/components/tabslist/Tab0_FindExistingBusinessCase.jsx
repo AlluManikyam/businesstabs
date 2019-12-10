@@ -11,8 +11,10 @@ class Tab0_FindExistingBusinessCase extends Component {
   }
 
   componentWillReceiveProps(props) {
+    console.log("Store Reducerssss tab000000 before", props);
+
     if (props && props.fmsData && props.fmsData.selectedEmployees) {
-      console.log("Store Reducerssss tab0", props);
+      console.log("Store Reducerssss tab000000", props);
       this.setState({
         selectedEmployees: props.fmsData.selectedEmployees
       });

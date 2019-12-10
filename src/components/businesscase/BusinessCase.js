@@ -32,6 +32,7 @@ class businesscase extends Component {
 
   render() {
     let {currentTab}=this.state
+    console.log("currenttablllll",currentTab)
     return (
       <div className="Businesscase">
        <Header/>   
@@ -40,7 +41,7 @@ class businesscase extends Component {
           <div className="dynamic-taps">
          <TabsList currentTab={currentTab}/>
             <div className="tab-content">
-             <FindExistingBusinessCase/>
+             <FindExistingBusinessCase currentTab={currentTab}/>
              <AddBusinessCase changeCurrentTab={this.setCurrentTab}/>
              <CreateManageBusiness  changeCurrentTab={this.setCurrentTab}/>
              <SelectedEmployees changeCurrentTab={this.setCurrentTab}/>

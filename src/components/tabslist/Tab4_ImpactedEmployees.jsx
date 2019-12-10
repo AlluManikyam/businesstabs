@@ -1,35 +1,29 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import BootstrapTable from "../common/BootstrapTable";
-import { storeSelectedEmployees } from "../../redux/actions/fmsActions";
 
 class Tab4_ImpactedEmployees extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedEmployees: [],
+      selectedEmployeesList: [],
       addBusinessCase: props.fmsData.businessCaseData
     };
   }
 
   componentWillReceiveProps(props) {
     if (props && props.fmsData && props.fmsData.businessCaseData) {
-      console.log("Store Reducerssss tab3", props);
+      console.log("Store Reducerssss tab3 impacted", props);
       this.setState({
-        addBusinessCase: props.fmsData.businessCaseData
+        addBusinessCase: props.fmsData.businessCaseData,
+        selectedEmployeesList: props.fmsData.selectedEmployees
       });
     }
   }
 
-  getSelectedEmployees(empList) {
-    this.setState({
-      selectedEmployees: empList
-    });
-  }
+
 
   saveAsDraftMethod() {
-    const { selectedEmployees } = this.state;
-    this.props.storeSelectedEmployees(selectedEmployees);
     this.props.changeCurrentTab(5, "tabFive");
   }
   render() {
@@ -98,7 +92,7 @@ class Tab4_ImpactedEmployees extends Component {
                         <div className="commentsGrid">Employee</div>
                         <div className="commentsTab">
                           <div className="selectedEmp">
-                            <BootstrapTable  checkMode="checkbox" selectedEmp={this.getSelectedEmployees.bind(this)}/>
+                            <BootstrapTable  tableName="selectEmps" checkMode=""  tableData={this.state.selectedEmployeesList} />
                           </div>
                         </div>
                         <div className="row rowbottomspace">
@@ -147,6 +141,4 @@ class Tab4_ImpactedEmployees extends Component {
   }
 }
 
-export default connect(state => ({ fmsData: state.fpms_reducer }), {
-  storeSelectedEmployees
-})(Tab4_ImpactedEmployees);
+export default connect(state => ({ fmsData: state.fpms_reducer }))(Tab4_ImpactedEmployees);
