@@ -46,7 +46,7 @@ class Tab1_AddBusinessCase extends Component {
     addBusinessCase[e.target.name] = e.target.value;
     this.setState({
       addBusinessCase
-    });
+    })
   }
 
   showAddPlanCode(){
@@ -72,7 +72,7 @@ class Tab1_AddBusinessCase extends Component {
     plan_table[e.target.name] = e.target.value;
     this.setState({
       addBusinessCase
-    });
+    })
   }
 
   addBusinessCaseMethod() {
@@ -88,7 +88,16 @@ class Tab1_AddBusinessCase extends Component {
     plan_table.batch_rpt_to_date = batch_rpt_to_date;
     document.getElementById("errorPlan").innerHTML=""
     document.getElementById("errorSetId").innerHTML=""
-    
+    if(addBusinessCase.plan_code===""){
+      document.getElementById("errorPlan").innerHTML="Please Enter Plancode"
+      document.getElementById("planCode").style.display = 'none';
+      window.scrollTo(0,0)
+    }
+    if(addBusinessCase.set_id===""){
+      document.getElementById("errorSetId").innerHTML="Please Enter Set ID"
+      document.getElementById("planCode").style.display = 'none';
+      window.scrollTo(0,0)
+    }
     if(addBusinessCase.plan_code!==""&&addBusinessCase.set_id!==""){
      
     // API calling
