@@ -430,7 +430,7 @@ class Tab3_SelectedEmployees extends Component {
                 </div>
 
                 <div className="selectedEmp">
-                  <BootstrapTable />
+                  <BootstrapTable checkMode=""/>
                 </div>
                 <div className="row rowbottomspace">
                   <div className="col-md-8 ">

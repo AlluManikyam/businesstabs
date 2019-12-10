@@ -131,7 +131,7 @@ class DataTable extends Component {
 
   render() {
     const selectRowProp = {
-      mode: "checkbox",
+      mode: this.props.checkMode,
       //bgColor: "pink",
       clickToSelect: true,
       onSelect: this.handleOnSelect,

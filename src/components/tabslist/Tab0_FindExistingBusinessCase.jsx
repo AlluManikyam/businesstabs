@@ -31,7 +31,7 @@ class Tab0_FindExistingBusinessCase extends Component {
                 </thead>
               </table> */}
             <div className="selectedEmp">
-              <BootstrapTable />
+              <BootstrapTable checkMode=""/>
             </div>
           </div>
         </div>

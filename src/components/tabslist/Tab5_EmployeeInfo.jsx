@@ -89,10 +89,10 @@ class Tab5_EmployeeInfo extends Component {
                       aria-labelledby="headingOne"
                     >
                       <div className="emp-tableBlock">
-                        <div className="commentsGrid">table Name</div>
+                        <div className="commentsGrid">Table Name</div>
                         <div className="commentsTab">
                           <div className="selectedEmp">
-                            <BootstrapTable tableData={this.state.selectedEmployeesList} tableName="selectEmps" />
+                            <BootstrapTable checkMode="" tableData={this.state.selectedEmployeesList} tableName="selectEmps" />
                           </div>
                         </div>
                         <div className="row rowbottomspace">

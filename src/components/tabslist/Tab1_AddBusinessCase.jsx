@@ -36,6 +36,7 @@ class Tab1_AddBusinessCase extends Component {
         }
       }
     };
+    this.showAddPlanCode=this.showAddPlanCode.bind(this)
 
     console.log("Store Reducerssss",this.props)
   }
@@ -46,6 +47,23 @@ class Tab1_AddBusinessCase extends Component {
     this.setState({
       addBusinessCase
     });
+  }
+
+  showAddPlanCode(){
+    let { addBusinessCase } = this.state;
+    document.getElementById("errorPlan").innerHTML="";
+    document.getElementById("errorSetId").innerHTML="";
+    document.getElementById("planCode").style.display = 'none';
+
+    if(addBusinessCase.plan_code===""){
+      document.getElementById("errorPlan").innerHTML="Please Enter Plancode"
+    }
+    if(addBusinessCase.set_id===""){
+      document.getElementById("errorSetId").innerHTML="Please Enter Set ID"
+    }
+    if(addBusinessCase.plan_code!==""&&addBusinessCase.set_id!==""){
+      document.getElementById("planCode").style.display = 'block';
+    }
   }
 
   onChangePlanCodeValues(e) {
@@ -70,14 +88,7 @@ class Tab1_AddBusinessCase extends Component {
     plan_table.batch_rpt_to_date = batch_rpt_to_date;
     document.getElementById("errorPlan").innerHTML=""
     document.getElementById("errorSetId").innerHTML=""
-    if(addBusinessCase.plan_code===""){
-      document.getElementById("errorPlan").innerHTML="Please Enter Plancode"
-      window.scrollTo(0,0)
-    }
-    if(addBusinessCase.set_id===""){
-      document.getElementById("errorSetId").innerHTML="Please Enter Set ID"
-      window.scrollTo(0,0)
-    }
+    
     if(addBusinessCase.plan_code!==""&&addBusinessCase.set_id!==""){
      
     // API calling
@@ -174,42 +185,12 @@ class Tab1_AddBusinessCase extends Component {
                 </div>
               </div>
               <div className="row">
-                {/* {" "}
-                <div id="home" className="tab-pane fade ">
-                  <div className="container-fluid">
-                    <div className="findEmp">
-                      <table
-                        id="findExitemp"
-                        className="table table-bordered table-striped"
-                        cellspacing="0"
-                        width="100%"
-                      >
-                        <thead>
-                          <tr>
-                            <th></th>
-                            <th scope="col">Business case number</th>
-
-                            <th scope="col">Plan Code Id</th>
-                            <th scope="col">Bus Case Status</th>
-                            <th scope="col">Effective date/time</th>
-                            <th scope="col">HRBP Manager</th>
-                            <th scope="col">Section Manager</th>
-                            <th scope="col">Type of RIF</th>
-                            <th scope="col">Severance Calc</th>
-                            <th scope="col">EID</th>
-                            <th scope="col">Employee Id</th>
-                            <th scope="col">Employee Name</th>
-                          </tr>
-                        </thead>
-                      </table>
-                    </div>
-                  </div>
-                </div> */}
                 <div className="col-md-7 ">
                   <button
                     type="button"
                     className="btn btn-primary btn-black btn-addblock btn-addOne AddPlancode"
                     id="addPlanCode"
+                    onClick={this.showAddPlanCode}
                   >
                     Add
                   </button>

@@ -95,13 +95,14 @@ $(document).on('click', '.number-spinner button', function () {
         });
 
     });
-    $(document).ready(function(){
+    
+   //  $(document).ready(function(){
   
-  $(".AddPlancode").click(function(){
-    $("#planCode").show();
+//   $(".AddPlancode").click(function(){
+//     $("#planCode").show();
    
-  });
-});
+//   });
+// });
 $(document).ready(function() {
     $('#findEmp').DataTable();
 } );

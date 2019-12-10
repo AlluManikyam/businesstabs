@@ -97,7 +97,7 @@ class Tab4_ImpactedEmployees extends Component {
                         <div className="commentsGrid">Employee</div>
                         <div className="commentsTab">
                           <div className="selectedEmp">
-                            <BootstrapTable  selectedEmp={this.getSelectedEmployees.bind(this)}/>
+                            <BootstrapTable  checkMode="checkbox" selectedEmp={this.getSelectedEmployees.bind(this)}/>
                           </div>
                         </div>
                         <div className="row rowbottomspace">

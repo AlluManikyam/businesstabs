@@ -90,13 +90,13 @@ onChangeOffPayRollDate = date =>
     // Notification Date
     let notificationDate = new Date(date);
     let notificationPeriodPlan=parseInt(business_case_data_management.notification_period_plan)
-    notificationDate.setDate(date.getDate() + notificationPeriodPlan);
-    let FormattedNofiDate = moment(notificationDate, "x").format("DD/MM/YYYY") 
+    notificationDate.setDate(date.getDate() - notificationPeriodPlan);
+    let FormattedNofiDate = moment(notificationDate, "x").format("MM/DD/YYYY") 
     
     // Last Day Worked
     let lastDayWorked = new Date(date);
     lastDayWorked.setDate(date.getDate() -1);
-    let FormattedlastDayWorkedDate =moment(lastDayWorked, "x").format("DD/MM/YYYY") 
+    let FormattedlastDayWorkedDate =moment(lastDayWorked, "x").format("MM/DD/YYYY") 
     business_case_data_management["notification_date"] = FormattedNofiDate;
     business_case_data_management["last_day_worked"] = FormattedlastDayWorkedDate;
 
@@ -119,13 +119,13 @@ onChangeBusinessCaseDataManagementValues(e) {
     let date=business_case_data_management.off_payroll_date
     let notificationDate = new Date(date);
     let notificationPeriodPlan=parseInt(business_case_data_management.notification_period_plan)
-    notificationDate.setDate(date.getDate() + notificationPeriodPlan);
-    let FormattedNofiDate = moment(notificationDate, "x").format("DD/MM/YYYY") 
+    notificationDate.setDate(date.getDate() - notificationPeriodPlan);
+    let FormattedNofiDate = moment(notificationDate, "x").format("MM/DD/YYYY") 
     
     // Last Day Worked
     let lastDayWorked = new Date(date);
     lastDayWorked.setDate(date.getDate() -1);
-    let FormattedlastDayWorkedDate =moment(lastDayWorked, "x").format("DD/MM/YYYY") 
+    let FormattedlastDayWorkedDate =moment(lastDayWorked, "x").format("MM/DD/YYYY") 
     business_case_data_management["notification_date"] = FormattedNofiDate;
     business_case_data_management["last_day_worked"] = FormattedlastDayWorkedDate;
 
@@ -689,6 +689,7 @@ onChangeCommentsValues(e){
                                       <div className="col-md-4">
                                       <div className="w-100">
                                           <DatePicker
+                                            format="MM-dd-yyyy"
                                             className="offPayRollDate"
                                             onChange={this.onChangeOffPayRollDate}
                                             value={business_case_data_management.off_payroll_date}
@@ -944,7 +945,7 @@ onChangeCommentsValues(e){
                                     </div>
                                     <div className="col-md-2">
                                       <label className="labelDate">
-                                       {moment(comments.date_time_entered, "x").format("DD/MM/YYYY") }
+                                       {moment(comments.date_time_entered, "x").format("MM/DD/YYYY") }
                                       </label>
                                     </div>
                                     <div className="col-md-3">
@@ -997,7 +998,7 @@ onChangeCommentsValues(e){
                                   </div>
                                   <div className="col-md-2">
                                     <label className="labelDate">
-                                      02/22/2019 1:51 PM
+                                    {moment(new Date(), "x").format("MM/DD/YYYY  hh:mm A") }
                                     </label>
                                   </div>
                                 </div>
@@ -1008,9 +1009,10 @@ onChangeCommentsValues(e){
                                     </div>
                                   </div>
 
-                                  <div className="col-md-3">
+                                  <div className="col-md-4">
                                     <div className="form-group">
                                       <label>Last Update Date/Time: </label>
+                                      {moment(new Date(), "x").format("MM/DD/YYYY  hh:mm A") }
                                     </div>
                                   </div>
                                 </div>
