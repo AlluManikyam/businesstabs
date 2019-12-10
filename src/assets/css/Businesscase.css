@@ -27,7 +27,6 @@
     width: 100%;
   }
   
-  
   .clr-sub
   {
       color:#ed1b24;
@@ -37,6 +36,48 @@
     position: relative;
     display: block !important;
     border-radius: 0px !important;
+    overflow: hidden;
+    background-color: #fff;
+    padding: 20px 10px;
+}
+.navbar {
+  background: #000 !important;
+}
+.header img {
+  max-width: 100%;
+  height: auto;
+  position: relative;
+  float: left;
+}
+.error {
+  font-size: 15px;
+  color: red;
+}
+.offPayRollDate {
+  width: 100%;
+}
+.offPayRollDate input {
+  border: none !important;
+}
+
+.offPayRollDate .react-date-picker__wrapper {
+  width: 100%;
+}
+
+/* .disabled {
+  display: none !important;
+  pointer-events: none;
+  opacity: 0.6;
+} */
+
+.clr-sub {
+  color: #ed1b24;
+}
+
+.navbar {
+  position: relative;
+  display: block !important;
+  border-radius: 0px !important;
   overflow: hidden;
   background-color: #fff;
   padding: 20px 10px;
@@ -48,12 +89,6 @@
   position: relative;
   float: left;
 }
-
-/* .disabled {
-  display: none !important;
-  pointer-events: none;
-  opacity: 0.6;
-} */
 
 .clr-sub {
   color: #ed1b24;

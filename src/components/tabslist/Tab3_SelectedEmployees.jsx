@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import BootstrapTable from "../common/BootstrapTable";
 
-
 class Tab3_SelectedEmployees extends Component {
   constructor(props) {
     super(props);
@@ -20,7 +19,7 @@ class Tab3_SelectedEmployees extends Component {
         first_name: "",
         last_name: ""
       },
-      addBusinessCase: props.fmsData.businessCaseData,
+      addBusinessCase: props.fmsData.businessCaseData
     };
   }
 
@@ -37,10 +36,9 @@ class Tab3_SelectedEmployees extends Component {
     console.log("hey: ", selectedEmployees);
   }
 
-
   saveAsDraftMethod() {
-    let { selectedEmployees } = this.state
-    this.props.changeCurrentTab(4, "tabFour")
+    let { selectedEmployees } = this.state;
+    this.props.changeCurrentTab(4, "tabFour");
   }
 
   componentWillReceiveProps(props) {
@@ -79,7 +77,7 @@ class Tab3_SelectedEmployees extends Component {
                       Plan :
                     </label>
                     <div className="labelgrid">
-                      Plan: {plan_table && plan_table.description}
+                      {plan_table && plan_table.description}
                     </div>
                   </div>
                 </div>
@@ -88,7 +86,7 @@ class Tab3_SelectedEmployees extends Component {
                     <label className="control-label labelredTheme">
                       Business Case Number :{" "}
                     </label>
-                    <div className="labelgrid">New</div>
+                    <div className="labelgrid">{plan_code}0001</div>
                   </div>
                 </div>
               </div>
@@ -102,8 +100,7 @@ class Tab3_SelectedEmployees extends Component {
                         <div className="row">
                           <div className="col-md-2">
                             <div className="form-group">
-                              <label>SetID:</label>    type="text"
-                                className="form-control"
+                              <label>SetID:</label>
                             </div>
                           </div>
                           <div className="col-md-3">

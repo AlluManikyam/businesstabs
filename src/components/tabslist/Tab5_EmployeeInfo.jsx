@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import BootstrapTable from "../common/BootstrapTable";
 
-
 class Tab5_EmployeeInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    selectedEmployeesList:[],
-    addBusinessCase:props.fmsData.businessCaseData
-    }
+      selectedEmployeesList: [],
+      addBusinessCase: props.fmsData.businessCaseData
+    };
   }
 
   componentWillReceiveProps(props) {
@@ -17,17 +16,18 @@ class Tab5_EmployeeInfo extends Component {
       console.log("Store Reducerssss tab3", props);
       this.setState({
         addBusinessCase: props.fmsData.businessCaseData,
-        selectedEmployeesList:props.fmsData.selectedEmployees
+        selectedEmployeesList: props.fmsData.selectedEmployees
       });
     }
   }
 
   saveAndSubmitMethod() {
-    this.props.changeCurrentTab(0, "home")
+    this.props.changeCurrentTab(0, "home");
   }
 
-
   render() {
+    let { plan_code, set_id, plan_table } = this.state.addBusinessCase;
+
     return (
       <>
         <div id="tabFive" className="tab-pane fade ">
@@ -40,7 +40,7 @@ class Tab5_EmployeeInfo extends Component {
                       Plan :
                     </label>
                     <div className="labelgrid">
-                      Mgmt Prog Enterprise Wireline
+                      {plan_table && plan_table.description}
                     </div>
                   </div>
                 </div>
@@ -49,7 +49,7 @@ class Tab5_EmployeeInfo extends Component {
                     <label className="control-label labelredTheme">
                       Business Case number :{" "}
                     </label>
-                    <div className="labelgrid">RIFV109147</div>
+                    <div className="labelgrid">{plan_code}0001</div>
                   </div>
                 </div>
               </div>
@@ -116,7 +116,7 @@ class Tab5_EmployeeInfo extends Component {
                                   type="button"
                                   className="btn btn-primary btn-saveSubmint btn-black-medium"
                                   onClick={this.saveAndSubmitMethod.bind(this)}
-                               >
+                                >
                                   Save and Submit
                                 </button>
                                 <button
@@ -145,4 +145,3 @@ class Tab5_EmployeeInfo extends Component {
 export default connect(state => ({ fmsData: state.fpms_reducer }))(
   Tab5_EmployeeInfo
 );
-
