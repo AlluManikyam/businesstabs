@@ -201,7 +201,7 @@ onChangeCommentsValues(e){
                             Plan :
                           </label>
                           <div className="labelgrid">
-                            {plan_code}
+                            {plan_table && plan_table.description}
                           </div>
                         </div>
                       </div>
@@ -264,7 +264,7 @@ onChangeCommentsValues(e){
                                             </div>
                                             <div className="col-sm-6">
                                               <div className="labelgrid flex-left">
-                                                {plan_table&&plan_table.description}
+                                                {plan_table &&plan_table.description}
                                               </div>
                                             </div>
                                           </div>
@@ -294,7 +294,7 @@ onChangeCommentsValues(e){
                                             </div>
                                             <div className="col-sm-7">
                                               <div className="labelgrid flex-left">
-                                                {}
+                                              {plan_code}0001 {Object.keys(selection_manager_search_data).length>0? selection_manager_search_data === '404'?'no results found': `${selection_manager_search_data.name}, ${selection_manager_search_data.location}` :''}
                                               </div>
                                             </div>
                                           </div>
