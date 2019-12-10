@@ -39,7 +39,9 @@ class Tab5_EmployeeInfo extends Component {
                     <label className="control-label labelredTheme">
                       Plan :
                     </label>
-                    <div className="labelgrid">{plan_code}</div>
+                    <div className="labelgrid">
+                      {plan_table && plan_table.description}
+                    </div>
                   </div>
                 </div>
                 <div className="col-md-8">
