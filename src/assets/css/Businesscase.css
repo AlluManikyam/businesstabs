@@ -63,11 +63,11 @@
   width: 100%;
 }
 
-/* .disabled {
+.disabled {
   display: none !important;
   pointer-events: none;
   opacity: 0.6;
-} */
+}
 
 .clr-sub {
   color: #ed1b24;
