@@ -9,6 +9,7 @@ class DataTable extends Component {
     super(props);
     this.state = {
       text: "",
+      tbName: "",
       tableData: global.assessmentsList,
       row: false,
       loading: true,
@@ -23,7 +24,7 @@ class DataTable extends Component {
           selected: [...this.state.selected, row]
         }),
         () => {
-          this.props.selectedEmp(this.state.selected)
+          this.props.selectedEmp(this.state.selected);
         }
       );
     } else {
@@ -32,7 +33,7 @@ class DataTable extends Component {
           selected: this.state.selected.filter(x => x.id !== row.id)
         }),
         () => {
-          this.props.selectedEmp(this.state.selected)
+          this.props.selectedEmp(this.state.selected);
         }
       );
     }
@@ -42,27 +43,44 @@ class DataTable extends Component {
     console.log("rows", rows);
     //const ids = rows.map(r => r.id);
     if (isSelect) {
-      this.setState(() => ({
-        selected: rows
-      }),()=>{
-        this.props.selectedEmp(this.state.selected)
-      });
+      this.setState(
+        () => ({
+          selected: rows
+        }),
+        () => {
+          this.props.selectedEmp(this.state.selected);
+        }
+      );
     } else {
-      this.setState(() => ({
-        selected: []
-      }),()=>{
-        this.props.selectedEmp(this.state.selected)
-      });
+      this.setState(
+        () => ({
+          selected: []
+        }),
+        () => {
+          this.props.selectedEmp(this.state.selected);
+        }
+      );
     }
   };
 
-  componentWillReceiveProps(props){
-    console.log("propspropspropsprops",props)
-    if(props&&props.tableData&&props.tableData.length>0&&props.tableName==="selectEmps"){
-      console.log("Store Reducerssss Tab2",props)
-      this.setState({
-        tableData:props.tableData
-      })
+  componentWillReceiveProps(props) {
+    console.log("propspropspropsprops", props);
+    if (
+      (props &&
+        props.tableData &&
+        props.tableData.length > 0 &&
+        props.tableName === "selectEmps") ||
+      props.tableName === "empInfo"
+    ) {
+      this.setState(
+        {
+          tableData: props.tableData,
+          tbName: props.tableName
+        },
+        () => {
+          console.log("Store Reducerssss Tab2masala ", this.state.tableData);
+        }
+      );
     }
   }
 
@@ -130,6 +148,8 @@ class DataTable extends Component {
   }
 
   render() {
+    console.log("Store Reducerssss Tab2masala render ", this.state.tableData);
+
     const selectRowProp = {
       mode: this.props.checkMode,
       //bgColor: "pink",
@@ -168,7 +188,7 @@ class DataTable extends Component {
     return (
       <React.Fragment>
         {this.state.loading === true ? (
-          <div className="acuty-table">
+          <div className={`acuty-table ${this.state.tbName}`}>
             <BootstrapTable
               ref="table"
               bordered={false}

@@ -1,38 +1,39 @@
 import React, { Component } from "react";
 import BootstrapTable from "../common/BootstrapTable";
+import { connect } from "react-redux";
 
 class Tab0_FindExistingBusinessCase extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedEmployees: []
+    };
+  }
+
+  componentWillReceiveProps(props) {
+    if (props && props.fmsData && props.fmsData.selectedEmployees) {
+      console.log("Store Reducerssss tab0", props);
+      this.setState({
+        selectedEmployees: props.fmsData.selectedEmployees
+      });
+    }
+  }
   render() {
+    let { selectedEmployees } = this.state;
+    console.log("selectedEmployeesList", selectedEmployees);
     return (
       <>
         <div id="home" className="tab-pane fade ">
           <div className="container-fluid mt-5">
-            {/* <table
-                id="findExitemp"
-                className="table table-bordered table-striped"
-                cellspacing="0"
-                width="100%"
-              >
-                <thead>
-                  <tr>
-                    <th></th>
-                    <th scope="col">Business case number</th>
-                    <th scope="col">Plan Code Id</th>
-                    <th scope="col">Bus Case Status</th>
-                    <th scope="col">Effective date/time</th>
-                    <th scope="col">HRBP Manager</th>
-                    <th scope="col">Section Manager</th>
-                    <th scope="col">Type of RIF</th>
-                    <th scope="col">Severance Calc</th>
-                    <th scope="col">EID</th>
-                    <th scope="col">Employee Id</th>
-                    <th scope="col">Employee Name</th>
-                  </tr>
-                </thead>
-              </table> */}
-            <div className="selectedEmp">
-              <BootstrapTable checkMode=""/>
-            </div>
+            {selectedEmployees && selectedEmployees.length > 0 ? (
+              <BootstrapTable
+                checkMode=""
+                tableData={selectedEmployees}
+                tableName="empInfo"
+              />
+            ) : (
+              <div className="employess-data">No records found</div>
+            )}
           </div>
         </div>
       </>
@@ -40,4 +41,6 @@ class Tab0_FindExistingBusinessCase extends Component {
   }
 }
 
-export default Tab0_FindExistingBusinessCase;
+export default connect(state => ({ fmsData: state.fpms_reducer }))(
+  Tab0_FindExistingBusinessCase
+);
