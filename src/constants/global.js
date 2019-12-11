@@ -89,3 +89,12 @@ module.exports.searchArray = [
     location: "Srcrs"
   }
 ];
+
+module.exports.FindExistingCaseArray = [
+  {
+    set_id: "RIFV0034",
+    plan_code: "RIFVSCA",
+    comments: "Hello MAZXsfsfsaf",
+    businesscase_number: "RIFV0001"
+  }
+];

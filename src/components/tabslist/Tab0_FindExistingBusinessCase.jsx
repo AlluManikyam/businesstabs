@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import BootstrapTable from "../common/BootstrapTable";
+import ExistingTable from "../common/ExistingTable";
 import { connect } from "react-redux";
 
 class Tab0_FindExistingBusinessCase extends Component {
@@ -28,11 +28,7 @@ class Tab0_FindExistingBusinessCase extends Component {
         <div id="home" className="tab-pane fade ">
           <div className="container-fluid mt-5">
             {selectedEmployees && selectedEmployees.length > 0 ? (
-              <BootstrapTable
-                checkMode=""
-                tableData={selectedEmployees}
-                tableName="empInfo"
-              />
+              <ExistingTable checkMode="" />
             ) : (
               <div className="employess-data">No records found</div>
             )}
