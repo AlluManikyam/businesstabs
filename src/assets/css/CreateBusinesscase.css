@@ -1,107 +1,102 @@
-
-.clr-sub
-{
-    color:#d52b1e;
+.clr-sub {
+  color: #d52b1e;
 }
 
-.inputbox-lg
-{
-  padding:2rem;
+.inputbox-lg {
+  padding: 2rem;
 }
-.inputbox-lg input{
+.inputbox-lg input {
   height: 40px;
 }
-.inputbox-lg label{
+.inputbox-lg label {
   display: flex;
   margin-left: 16px;
   margin-top: 10px;
   font-size: 12px !important;
 }
-.inputbox-lg .row 
-{
+.inputbox-lg .row {
   margin-top: 15px;
   margin-bottom: 15px;
 }
-
 
 /*Expand and collapse*/
 .tab-content > .active {
   display: block;
   opacity: 1 !important;
 }
-.bcdTapwrapper{
-  width:100%;
+.bcdTapwrapper {
+  width: 100%;
 }
-@media(max-width:992px){
- .bcdTapwrapper{
-  width:100%;
-} 
+@media (max-width: 992px) {
+  .bcdTapwrapper {
+    width: 100%;
+  }
 }
 .panel-heading {
   padding: 0;
-    border:0;
+  border: 0;
 }
-.panel-title>a, .panel-title>a:active{
-    display:block;
-    padding:15px;
-  color:#555;
-  font-size:16px;
-  font-weight:bold;
-    text-transform:uppercase;
-    letter-spacing:1px;
-  word-spacing:3px;
-    text-decoration:none;
+.panel-title > a,
+.panel-title > a:active {
+  display: block;
+  padding: 15px;
+  color: #555;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  word-spacing: 3px;
+  text-decoration: none;
 }
-.panel-heading  a:before {
-   font-family: 'Glyphicons Halflings';
-   content: "\e114";
-   float: right;
-   transition: all 0.5s;
+.panel-heading a:before {
+  font-family: "Glyphicons Halflings";
+  content: "\e114";
+  float: right;
+  transition: all 0.5s;
 }
 .panel-heading.active a:before {
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    transform: rotate(180deg);
-} 
-#cmbc-tab  .panel-group .panel {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+#cmbc-tab .panel-group .panel {
   margin-bottom: 0;
   border-radius: 0px !important;
 }
-#cmbc-tab  .panel-heading {
+#cmbc-tab .panel-heading {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
 #cmbc-tab .collapse.in {
   display: block !important;
 }
-#cmbc-tab .panel-default>.panel-heading {
+#cmbc-tab .panel-default > .panel-heading {
   color: #fff;
   background-color: #000;
   border-color: none;
 }
-#cmbc-tab .panel-title>a, .panel-title>a:active{
+#cmbc-tab .panel-title > a,
+.panel-title > a:active {
   color: #fff;
   text-decoration: none;
   text-transform: none;
 }
-#cmbc-tab .panel-title a>span{
+#cmbc-tab .panel-title a > span {
   display: flex;
 }
 
-#cmbc-tab .group-block{
+#cmbc-tab .group-block {
   background: #f5f7fa;
 }
-.panel-headGroup
-{
+.panel-headGroup {
   border-bottom: 1px solid #cecaca;
   margin-bottom: 4rem;
 }
-.bcdTapwrapper input{
+.bcdTapwrapper input {
   height: 40px;
 }
 
-.GridFrom label
-{
+.GridFrom label {
   font-size: 12px;
   display: flex;
   font-weight: 700;
@@ -109,18 +104,17 @@
   left: 10px;
   top: 10px;
 }
-.GridFrom input{
+.GridFrom input {
   height: 40px;
   background: #f5f7fa;
-  
+
   border: 1px solid #bbb9b9;
 }
-.GridFrom .row 
-{
+.GridFrom .row {
   margin-top: 15px;
   margin-bottom: 15px;
 }
-.GridFrom .input-group-btn>.btn {
+.GridFrom .input-group-btn > .btn {
   position: relative;
   /* left: -27px; */
   background: #f5f7fa;
@@ -128,27 +122,25 @@
   width: 31px;
   border: 1px solid #bbb9b9;
 }
-.GridFrom  .glyphicon-search:before {
+.GridFrom .glyphicon-search:before {
   font-size: 15px;
   color: #999;
   left: 0px;
   top: 3px;
 }
-.GridFrom .labelSuccess .childlabel{
+.GridFrom .labelSuccess .childlabel {
   position: relative;
   font-size: 13px;
 }
-.GridFrom .childlabel{
+.GridFrom .childlabel {
   margin-top: 10px;
 }
-.GridFrom span.labelSuccess
-{
+.GridFrom span.labelSuccess {
   margin-top: 10px;
-  color:#333;
+  color: #333;
 }
-.leftPickerDisable
-{
-position: relative;
+.leftPickerDisable {
+  position: relative;
   left: 10px;
 }
 #SubTabLevelOne {
@@ -159,49 +151,43 @@ position: relative;
   position: relative;
   padding-left: 15px;
   color: #fff;
-    background-color: #000;
+  background-color: #000;
   border: solid 1px #000;
 }
 
 #SubpanelTab {
   padding: 10px;
-  display: none;
+  display: block;
   border-left: 1px solid #a09e9e;
   border-right: 1px solid #a09e9e;
   border-bottom: 1px solid #a09e9e;
 }
-.SubTabGrid{
+.SubTabGrid {
   margin: 10px;
 }
 /* Number Spinner */
-.input-spinnerNumber
-{
+.input-spinnerNumber {
   width: 37px !important;
 }
-.input-spinnerNumber input
-{
+.input-spinnerNumber input {
   width: 60px !important;
 }
 .spinnerNumber-flex .input-group {
-
   display: table !important;
- 
 }
-.spanBlock
-{
+.spanBlock {
   position: absolute;
   top: 6px;
   left: 140px;
   white-space: nowrap;
 }
-.blockDisableBox{
-  
-  border: 1px solid #A0A1A2;
+.blockDisableBox {
+  border: 1px solid #a0a1a2;
   padding: 10px;
   margin: 10px 0 10px 0;
 }
-.commentsMainGrid{
-  margin:10px 0 10px 0;
+.commentsMainGrid {
+  margin: 10px 0 10px 0;
 }
 .commentsGrid {
   font-size: 16px;
@@ -214,21 +200,20 @@ position: relative;
   background-color: #000;
   border: solid 1px #000;
 }
-#commentBox
-{
-  height:  auto !important;
+#commentBox {
+  height: auto !important;
 }
-.commentsTab{
+.commentsTab {
   padding: 10px;
   border-left: 1px solid #a09e9e;
   border-right: 1px solid #a09e9e;
   border-bottom: 1px solid #a09e9e;
 }
-.labelline{
+.labelline {
   text-decoration: underline;
   margin-top: 10px;
 }
-.rowbottomspace{
+.rowbottomspace {
   margin-bottom: 37px;
   margin-top: 26px;
 }

@@ -197,7 +197,6 @@ class DataTable extends Component {
               pagination={true}
               options={options}
               search={true}
-              version="4"
               striped
               hover
             >

@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import store from "../../redux/store";
 import DatePicker from 'react-date-picker';
 import config from '../../constants/global'
+import swal from "sweetalert"
+import commonUtils from '../../utils/ApiCalls.js'
 
 import {storeManageBusinessCaseData} from "../../redux/actions/fmsActions";
 import { parse } from 'url';
@@ -176,11 +178,26 @@ onChangeCommentsValues(e){
 }
 
   saveAsDraftMethod() {
-    let { manageBusinessCase } = this.state
-    this.props.storeManageBusinessCaseData(manageBusinessCase);
-    console.log("stprrrrrr",store.getState())
-    this.props.changeCurrentTab(3, "tabThree")
+    let { manageBusinessCase } = this.state;
+    let { plan_code  } = this.state.addBusinessCase;
 
+      // API calling
+      commonUtils.storeManageBusinessCaseData(manageBusinessCase).then((data)=>{
+        if (data) {
+          swal({
+            title: `ManageBusinesscase created successfully with ${plan_code}0001`,
+            icon: "success",
+          })
+          .then(() => {
+            this.props.storeManageBusinessCaseData(manageBusinessCase);
+            this.props.changeCurrentTab(3, "tabThree")
+          })
+        }
+  
+      }).catch((err)=>{
+        console.log("error",err)
+  
+      })
   }
 
     render(){
@@ -211,7 +228,9 @@ onChangeCommentsValues(e){
                             Business Case Number :
                           </label>
                           <div className="labelgrid"> 
-                          {plan_code}0001</div>
+                          New
+                          </div>
+                          {/* </div> {plan_code}0001 */}
                         </div>
                       </div>
                     </div>
@@ -294,7 +313,7 @@ onChangeCommentsValues(e){
                                             </div>
                                             <div className="col-sm-7">
                                               <div className="labelgrid flex-left">
-                                              {plan_code}0001 {Object.keys(selection_manager_search_data).length>0? selection_manager_search_data === '404'?'no results found': `${selection_manager_search_data.name}, ${selection_manager_search_data.location}` :''}
+                                               {Object.keys(selection_manager_search_data).length>0? selection_manager_search_data === '404'?'no results found': `${selection_manager_search_data.name}, ${selection_manager_search_data.location}` :''}
                                               </div>
                                             </div>
                                           </div>
@@ -486,7 +505,7 @@ onChangeCommentsValues(e){
                                       <div className="col-md-5">
                                         <div className="col-sm-4">
                                           <span className="flex-left labelSuccess">
-                                            Iatyi, Tyiit Ayyy
+                                          {Object.keys(hrbp_search_data).length>0? hrbp_search_data === '404'?'no results found': `${hrbp_search_data.name}, ${hrbp_search_data.location}` :''}
                                           </span>
                                         </div>
                                         <div className="col-sm-7"></div>
